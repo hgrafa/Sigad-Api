@@ -1,0 +1,52 @@
+package br.com.sigad.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import br.com.sigad.entities.enums.Destinacao;
+import br.com.sigad.entities.enums.GrauSigilo;
+import br.com.sigad.entities.enums.Permissao;
+import br.com.sigad.entities.enums.Sigilo;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "grupos")
+@Getter @Setter @EqualsAndHashCode
+public class Grupo {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id; 
+
+	private String nome;
+	
+	private Long codigo;
+	
+	@Enumerated(EnumType.STRING)
+	private Permissao permissaoDeUso;
+	
+	private String prazoCorrente;
+	
+	private String prazoIntermediaria;
+	
+	@Enumerated(EnumType.STRING)
+	private Destinacao destinacaoFinal;
+	
+	@Enumerated(EnumType.STRING)
+	private Sigilo sigilo;
+	
+	@Enumerated(EnumType.STRING)
+	private GrauSigilo grauSigilo;
+	
+	private Boolean indicadorAtiva;
+	
+	private String observacao;
+
+}
