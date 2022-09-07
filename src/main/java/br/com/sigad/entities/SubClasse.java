@@ -1,11 +1,17 @@
 package br.com.sigad.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.sigad.entities.enums.Destinacao;
@@ -48,5 +54,11 @@ public class SubClasse {
 	private Boolean indicadorAtiva;
 	
 	private String observacao;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Classe classe;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subclasse")
+	private List<Grupo> grupos;
 	
 }
