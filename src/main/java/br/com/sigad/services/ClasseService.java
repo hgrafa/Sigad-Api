@@ -2,11 +2,13 @@ package br.com.sigad.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sigad.entities.Classe;
+import br.com.sigad.entities.enums.Sigilo;
 import br.com.sigad.repositories.ClasseRepository;
 
 @Service
