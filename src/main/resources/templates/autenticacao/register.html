@@ -1,1 +1,70 @@
-registro
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{base::head}">
+
+
+
+</head>
+
+<body>
+	<!-- Pre-loader start -->
+	<div th:replace="fragments/preloaderstart :: preloaderstart"></div>
+	<!-- Pre-loader end -->
+
+	<section class="login-block">
+		<!-- Container-fluid starts -->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- Authentication card start -->
+
+					<form class="md-float-material form-material">
+						
+						<div class="auth-box card">
+							<div class="card-block">
+								<div class="row m-b-20">
+									<div class="col-md-12">
+										<h3 class="text-center">Projeto SIGAD</h3>
+									</div>
+								</div>
+								<div class="form-group form-default form-static-label">
+									<input type="text" name="email" class="form-control"> <span
+										class="form-bar"></span> <label class="float-label">
+										Usuário</label>
+								</div>
+								<div class="form-group form-default form-static-label">
+									<input type="password" name="password" class="form-control">
+									<span class="form-bar"></span> <label class="float-label">
+									Senha</label>
+								</div>
+								
+								<div class="row m-t-30">
+									<div class="col-md-12">
+										<button type="button"
+											class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign
+											in</button>
+									</div>
+								</div>
+								<hr />
+								
+							</div>
+						</div>
+					</form>
+					<!-- end of form -->
+				</div>
+				<!-- end of col-sm-12 -->
+			</div>
+			<!-- end of row -->
+		</div>
+		<!-- end of container-fluid -->
+	</section>
+
+	<!-- Body Scripts -->
+	<div th:replace="fragments/bodyscripts :: bodyscripts"></div>
+	<!-- Body Scripts -->
+
+</body>
+
+</html>

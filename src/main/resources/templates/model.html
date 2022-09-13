@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{base::head}"></head>
+
+<body>
+	<!-- Pre-loader start -->
+	<div th:replace="fragments/preloaderstart :: preloaderstart"></div>
+	<!-- Pre-loader end -->
+
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- NavBar -->
+			<div th:replace="fragments/navbar :: navbar"></div>
+			<!-- NavBar -->
+
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- SideBar -->
+					<div th:replace="fragments/sidebar :: sidebar"></div>
+					<!-- SideBar -->
+					<div class="pcoded-content">
+						<!-- Page-header start -->
+
+						<!-- Page-header end -->
+						<div class="pcoded-inner-content">
+							<!-- Main-body start -->
+							<div class="main-body">
+								<div class="page-wrapper">
+									<!-- Page-body start -->
+									<div class="page-body">
+										<div class="row">
+											<!-- Text  -->
+
+											Projeto SIGAD
+
+
+
+											<!-- Text  -->
+										</div>
+									</div>
+									<!-- Page-body end -->
+								</div>
+								<div id="styleSelector"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Body Scripts -->
+	<div th:replace="fragments/bodyscripts :: bodyscripts"></div>
+	<!-- Body Scripts -->
+
+</body>
+
+</html>
