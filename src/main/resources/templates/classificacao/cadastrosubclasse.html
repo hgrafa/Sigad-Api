@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{base::head}"></head>
+
+<body>
+	<!-- Pre-loader start -->
+	<div th:replace="fragments/preloaderstart :: preloaderstart"></div>
+	<!-- Pre-loader end -->
+
+	<div id="pcoded" class="pcoded">
+		<div class="pcoded-overlay-box"></div>
+		<div class="pcoded-container navbar-wrapper">
+			<!-- NavBar -->
+			<div th:replace="fragments/navbar :: navbar"></div>
+			<!-- NavBar -->
+
+			<div class="pcoded-main-container">
+				<div class="pcoded-wrapper">
+					<!-- SideBar -->
+					<div th:replace="fragments/sidebar :: sidebar"></div>
+					<!-- SideBar -->
+					<div class="pcoded-content">
+						<!-- Page-header start -->
+
+						<!-- Page-header end -->
+						<div class="pcoded-inner-content">
+							<!-- Main-body start -->
+							<div class="main-body">
+								<div class="page-wrapper">
+									<!-- Page-body start -->
+									<div class="page-body">
+										<div class="row">
+											<!-- Text  here - Start-->
+
+											<div class="card">
+												<div class="card-header">
+													<h5>Cadastro da Classe</h5>
+												</div>
+												<div class="card-block">
+													<form>
+														<div class="form-group row">
+															<label class="col-sm-2 col-form-label">Identificador:
+															</label>
+															<div class="col-sm-10">
+																<input type="text" class="form-control" readonly>
+															</div>
+														</div>
+
+														<div class="form-group row">
+															<label class="col-sm-2 col-form-label">Código de
+																Classificação: </label>
+															<div class="col-sm-10">
+																<input type="text" class="form-control">
+															</div>
+														</div>
+														
+														<div class="form-group row">
+															<label class="col-sm-2 col-form-label">Nome da Classe</label>
+															<div class="col-sm-10">
+																<select name="select" class="form-control">
+																	<option value="opt1">Selecione</option>
+																	<option value="opt2">xxxx</option>
+																	<option value="opt3">xxxx</option>
+																</select>
+															</div>
+														</div>
+
+														<div class="form-group row">
+															<label class="col-sm-2 col-form-label">Nome da
+																Sub-Classe: </label>
+															<div class="col-sm-10">
+																<input type="text" class="form-control">
+															</div>
+														</div>													
+												
+
+														<div class="form-group row">
+															<label class="col-sm-2 col-form-label">Indicação
+																da Classe</label>
+															<div class="col-sm-10">
+																<select name="select" class="form-control">
+																	<option value="opt1">Selecione</option>
+																	<option value="opt2">Ativa</option>
+																	<option value="opt3">Inativa</option>
+																</select>
+															</div>
+														</div>
+														<!-- Estrutura hierárquica -->
+														<div class="form-group row">
+															<label class="col-sm-2 col-form-label">Permissão
+																de Uso</label>
+															<div class="col-sm-10">
+																<select name="select" class="form-control">
+																	<option value="opt1">Selecione</option>
+																	<option value="opt2">Estrutura Hierárquica</option>
+																	<option value="opt3">Temporalidade e
+																		Destinação</option>
+																</select>
+															</div>
+														</div>
+
+
+														<!-- Temporalidade e Destinação -->
+														<div class="row">
+															<div class="col-sm-12">
+																<h4 class="sub-title" style="font-weight: bold">Temporalidade
+																	e Destinação</h4>
+
+																<div class="form-group row">
+																	<label class="col-sm-2 col-form-label">Fase
+																		Corrente: </label>
+																	<div class="col-sm-10">
+																		<input type="text" class="form-control"
+																			placeholder="Quantidade de anos em fase corrente">
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-sm-2 col-form-label">Fase
+																		Intermediária: </label>
+																	<div class="col-sm-10">
+																		<input type="text" class="form-control"
+																			placeholder="Quantidade de anos em fase intermediária">
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-sm-2 col-form-label">Destinação
+																		Final: </label>
+																	<div class="col-sm-10">
+																		<select name="select" class="form-control">
+																			<option value="opt1">Selecione</option>
+																			<option value="opt2">Eliminação</option>
+																			<option value="opt3">Guarda Permanente</option>
+																		</select>
+																	</div>
+																</div>
+
+															</div>
+
+														</div>
+
+
+														<!-- Sigilo -->
+														<div class="row">
+															<div class="col-sm-12">
+																<h4 class="sub-title" style="font-weight: bold">Sigilo
+																	Associado à Classe</h4>
+
+																<div class="form-group row">
+																	<label class="col-sm-2 col-form-label">Nível de
+																		Acesso: </label>
+																	<div class="col-sm-10">
+																		<select name="select" class="form-control">
+																			<option value="opt1">Selecione</option>
+																			<option value="opt2">Ostensivo</option>
+																			<option value="opt3">Sigiloso</option>
+																		</select>
+																	</div>
+																</div>
+
+																<div class="form-group row">
+																	<label class="col-sm-2 col-form-label">Grau de
+																		Sigilo: </label>
+																	<div class="col-sm-10">
+																		<select name="select" class="form-control">
+																			<option value="opt1">Selecione</option>
+																			<option value="opt2">Confidencial</option>
+																			<option value="opt3">Reservado</option>
+																			<option value="opt4">Secreto</option>
+																			<option value="opt5">Ultra-Secreto</option>
+																		</select>
+																	</div>
+																</div>
+
+															</div>
+
+														</div>
+
+														<!-- Observações -->
+														<div class="row">
+															<div class="col-sm-12">
+																<h4 class="sub-title" style="font-weight: bold">Observações
+																	Associadas à Classe</h4>
+
+																<div class="form-group row">
+																	<label class="col-sm-2 col-form-label">Observação</label>
+																	<div class="col-sm-10">
+																		<textarea rows="2" cols="5" class="form-control"></textarea>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<!-- Botões -->
+														<div style="text-align: center">
+															<p>
+																<button
+																	class="btn btn-primary btn-sm waves-effect waves-light"
+																	style="margin-right: 15px; font-weight: bold">Novo</button>
+
+																<button
+																	class="btn btn-success btn-sm waves-effect waves-light"
+																	style="margin-right: 15px; font-weight: bold">Salvar</button>
+
+																<button
+																	class="btn btn-inverse btn-sm waves-effect waves-light"
+																	style="margin-right: 15px; font-weight: bold">Editar</button>
+
+																<button
+																	class="btn btn-danger btn-sm waves-effect waves-light"
+																	style="margin-right: 15px; font-weight: bold">Excluir</button>
+															<p>
+														</div>
+
+													</form>
+
+
+
+													<!-- Table -->
+													
+
+													<div class="card">
+														<div class="card-header">
+															<h5>Classes Cadastradas</h5>															
+															
+														</div>
+														<div class="card-block table-border-style">
+															<div class="table-responsive">
+																<table class="table">
+																	<thead>
+																		<tr>
+																			<th>Cód. de Classificação</th>
+																			<th>Nome da SubClasse</th>
+																			<th>Nome da Classe</th>
+																			<th>Informações</th>
+																			<th>Editar</th>
+																			<th>Excluir</th>																			
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<th scope="row">000</th>
+																			<td>Mark</td>
+																			<td>Mark</td>
+																			<td>Otto</td>
+																			<td>@mdo</td>
+																			<td>@mdo</td>
+																		</tr>
+																		<tr>
+																			<th scope="row">100</th>
+																			<td>Mark</td>
+																			<td>Jacob</td>
+																			<td>Thornton</td>
+																			<td>@fat</td>
+																			<td>@mdo</td>
+																		</tr>
+																		<tr>
+																			<th scope="row">200</th>
+																			<td>Mark</td>
+																			<td>Larry</td>
+																			<td>the Bird</td>
+																			<td>@twitter</td>
+																			<td>@mdo</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+													
+													
+
+
+
+													<!-- Text  here - End-->
+												</div>
+											</div>
+											<!-- Page-body end -->
+										</div>
+										<div id="styleSelector"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Body Scripts -->
+			<div th:replace="fragments/bodyscripts :: bodyscripts"></div>
+			<!-- Body Scripts -->
+</body>
+
+</html>
