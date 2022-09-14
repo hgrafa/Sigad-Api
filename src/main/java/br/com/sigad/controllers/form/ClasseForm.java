@@ -3,6 +3,9 @@ package br.com.sigad.controllers.form;
 import javax.validation.constraints.NotBlank;
 
 import br.com.sigad.entities.Classe;
+import br.com.sigad.entities.enums.Destinacao;
+import br.com.sigad.entities.enums.GrauSigilo;
+import br.com.sigad.entities.enums.Permissao;
 import br.com.sigad.entities.enums.Sigilo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +28,10 @@ public class ClasseForm {
 	private String indicadorAtiva;	
 	
 	// enums
+	private String permissaoDeUso;
+	private String destinacaoFinal;
 	private String sigilo;
 	private String grauSigilo;
-	private String destinacaoFinal;
-	private String permissaoDeUso;
 	
 	public Classe toClasse() {
 		Classe classeEntity = new Classe();
@@ -37,10 +40,16 @@ public class ClasseForm {
 		
 		classeEntity.setCodigo(codigo);
 		classeEntity.setNome(nome);
+		classeEntity.setPrazoCorrente(prazoCorrente);
+		classeEntity.setPrazoIntermediaria(prazoIntermediaria);
+		classeEntity.setObservacao(observacao);
 		// ...
 		
 		// modelo de enum
+		classeEntity.setPermissaoDeUso(Permissao.valueOf(permissaoDeUso.toUpperCase())); //verify underline
+		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal.toUpperCase()));
 		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
+		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));//verify underline
 		
 		return classeEntity;
 	}
