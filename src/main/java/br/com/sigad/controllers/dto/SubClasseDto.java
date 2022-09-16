@@ -13,6 +13,7 @@ public class SubClasseDto {
 	private String prazoCorrente;
 	private String prazoIntermediaria;	
 	private String destinacaoFinal;
+	private String observacao;
 	
 	public SubClasseDto (SubClasse subClasse) {
 		this.codigo = subClasse.getCodigo();
@@ -20,6 +21,7 @@ public class SubClasseDto {
 		this.prazoCorrente = subClasse.getPrazoCorrente();
 		this.prazoIntermediaria = subClasse.getPrazoIntermediaria();
 		this.destinacaoFinal = subClasse.getDestinacaoFinal().toString().toLowerCase();
+		this.observacao = subClasse.getObservacao();
 	}
 
 }
