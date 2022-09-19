@@ -9,11 +9,16 @@ import lombok.Setter;
 public class ClasseDto {
 	
 	private Long codigo;
-	private String nome;	
+	private String nome; 
 	private String prazoCorrente;
 	private String prazoIntermediaria;	
 	private String destinacaoFinal;
 	private String observacao;
+	
+	/*Enum*/
+	private String permissaoDeUso;
+	
+	private Boolean indicadorAtiva;
 	
 	public ClasseDto(Classe classe) {
 		this.codigo = classe.getCodigo();
@@ -21,5 +26,8 @@ public class ClasseDto {
 		this.prazoCorrente = classe.getPrazoCorrente();
 		this.destinacaoFinal = classe.getDestinacaoFinal().toString().toLowerCase();
 		this.observacao = classe.getObservacao();
+		this.permissaoDeUso = classe.getPermissaoDeUso().toString().toLowerCase();
+		
+		this.indicadorAtiva = classe.getIndicadorAtiva();
 	}
 }
