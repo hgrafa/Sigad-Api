@@ -14,10 +14,11 @@ public class ClasseDto {
 	private String prazoIntermediaria;	
 	private String destinacaoFinal;
 	private String observacao;
+	private String sigilo;
+	private String grauSigilo;
 	
 	/*Enum*/
-	private String permissaoDeUso;
-	
+	private String permissaoDeUso;	
 	private Boolean indicadorAtiva;
 	
 	public ClasseDto(Classe classe) {
@@ -27,7 +28,8 @@ public class ClasseDto {
 		this.destinacaoFinal = classe.getDestinacaoFinal().toString().toLowerCase();
 		this.observacao = classe.getObservacao();
 		this.permissaoDeUso = classe.getPermissaoDeUso().toString().toLowerCase();
-		
 		this.indicadorAtiva = classe.getIndicadorAtiva();
+		this.sigilo = classe.getSigilo().toString().toLowerCase();
+		this.grauSigilo = classe.getGrauSigilo().toString().toLowerCase();
 	}
 }
