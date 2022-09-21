@@ -1,6 +1,8 @@
 package br.com.sigad.controllers.dto;
 
 import br.com.sigad.entities.Classe;
+import br.com.sigad.entities.enums.Destinacao;
+import br.com.sigad.entities.enums.Permissao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,9 +27,15 @@ public class ClasseDto {
 		this.codigo = classe.getCodigo();
 		this.nome = classe.getNome();
 		this.prazoCorrente = classe.getPrazoCorrente();
-		this.destinacaoFinal = classe.getDestinacaoFinal().toString().toLowerCase();
+
+		this.destinacaoFinal = (classe.getDestinacaoFinal() == Destinacao.ELIMINACAO) ? 
+				"Eliminação" : "Recolhimento";
+		
 		this.observacao = classe.getObservacao();
-		this.permissaoDeUso = classe.getPermissaoDeUso().toString().toLowerCase();
+		
+		this.permissaoDeUso = (classe.getPermissaoDeUso() == Permissao.ESTRUTURA_HIERARQUICA) ?
+				"Estrutura Hierarquica" : "Temporalidade e destinação";
+		
 		this.indicadorAtiva = classe.getIndicadorAtiva();
 		this.sigilo = classe.getSigilo().toString().toLowerCase();
 		this.grauSigilo = classe.getGrauSigilo().toString().toLowerCase();

@@ -29,6 +29,7 @@ public class ClasseForm {
 	
 	// enums
 	private String permissaoDeUso;
+
 	private String destinacaoFinal;
 	private String sigilo;
 	private String grauSigilo;
@@ -46,7 +47,7 @@ public class ClasseForm {
 		// ...
 		
 		// modelo de enum
-		classeEntity.setPermissaoDeUso(Permissao.valueOf(permissaoDeUso.toUpperCase())); //verify underline
+
 		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal.toUpperCase()));
 		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
 		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));//verify underline
