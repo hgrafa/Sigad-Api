@@ -28,24 +28,20 @@ public class ClasseController {
 
 	@Autowired
 	private ClasseService classeService;
-		
+
 	@GetMapping
 	public ResponseEntity<List<ClasseDto>> findAll() {
 		classeService.save();
-		List<ClasseDto> classes = classeService
-																.findAll()
-																.stream()
-																.map(c -> new ClasseDto(c))
-																.collect(Collectors.toList());
+		List<ClasseDto> classes = classeService.findAll().stream().map(c -> new ClasseDto(c))
+				.collect(Collectors.toList());
 
 		return ResponseEntity.ok().body(classes);
 	}
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ClasseDto> findById(@PathVariable Long id){
-		ClasseDto classe  = new ClasseDto( classeService.findById(id) );
+	public ResponseEntity<ClasseDto> findById(@PathVariable Long id) {
+		ClasseDto classe = new ClasseDto(classeService.findById(id));
 		return ResponseEntity.ok().body(classe);
 	}
-	
-	
+
 }

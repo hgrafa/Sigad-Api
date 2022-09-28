@@ -25,7 +25,7 @@ public class ClasseService {
 	public void save() {
 		List<Classe> input = new ArrayList<>();
 
-		input.add(new Classe(2L, "b1", "c", "d", "e", true, Permissao.ESTRUTURA_HIERARQUICA, Destinacao.ELIMINACAO, Sigilo.OSTENSIVO, GrauSigilo.CONFIDENCIAL));
+		input.add(new Classe(2L, "b1", "c", "d", "e", true, Permissao.ESTRUTURA_HIERARQUICA, Destinacao.RECOLHIMENTO, Sigilo.OSTENSIVO, GrauSigilo.CONFIDENCIAL));
 
 		input.add(new Classe(2L, "b2", "c", "d", "e", true, Permissao.ESTRUTURA_HIERARQUICA, Destinacao.ELIMINACAO, Sigilo.OSTENSIVO, GrauSigilo.CONFIDENCIAL));
 
@@ -43,6 +43,14 @@ public class ClasseService {
 		Optional<Classe> classe = classeRepository.findById(id);
 		return classe.get();
 	}
+	
+	public List<Classe> findByDestinacao(Destinacao destinacaoFinal){
+		List<Classe> classes = classeRepository.findAll().stream()
+				.filter(c -> c.getDestinacaoFinal().equals(destinacaoFinal))
+				.collect(Collectors.toList());
+		return classes;
+	};
+	
 	
 	
 }
