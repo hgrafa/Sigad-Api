@@ -20,6 +20,7 @@ import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.entities.enums.GrauSigilo;
 import br.com.sigad.entities.enums.Permissao;
 import br.com.sigad.entities.enums.Sigilo;
+import br.com.sigad.repositories.ClasseRepository;
 import br.com.sigad.services.ClasseService;
 
 @RestController
@@ -42,6 +43,12 @@ public class ClasseController {
 	public ResponseEntity<ClasseDto> findById(@PathVariable Long id) {
 		ClasseDto classe = new ClasseDto(classeService.findById(id));
 		return ResponseEntity.ok().body(classe);
+	}
+	
+	@GetMapping(value = "/destinacao") 
+	public ResponseEntity<List<Classe>> findByDestinacao (@PathVariable Destinacao destinacaoFinal){
+		List<Classe> classes = classeService.findByDestinacao(destinacaoFinal);
+		return ResponseEntity.ok().body(classes);
 	}
 
 }

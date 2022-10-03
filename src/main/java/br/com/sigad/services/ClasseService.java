@@ -22,7 +22,7 @@ public class ClasseService {
 	@Autowired
 	private ClasseRepository classeRepository;
 	
-	public void save() {
+	public void save() { 
 		List<Classe> input = new ArrayList<>();
 
 		input.add(new Classe(2L, "b1", "c", "d", "e", true, Permissao.ESTRUTURA_HIERARQUICA, Destinacao.RECOLHIMENTO, Sigilo.OSTENSIVO, GrauSigilo.CONFIDENCIAL));
