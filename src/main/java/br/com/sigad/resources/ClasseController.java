@@ -7,15 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sigad.controllers.dto.ClasseDto;
-import br.com.sigad.controllers.form.ClasseForm;
-import br.com.sigad.repositories.ClasseRepository;
+import br.com.sigad.entities.Classe;
+import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.services.ClasseService;
 
 @RestController
@@ -42,9 +40,14 @@ public class ClasseController {
 		return ResponseEntity.ok().body(classe);
 	}
 	
-	@GetMapping(value = "/destinacao") 
-	public ResponseEntity<List<Classe>> findByDestinacao (@PathVariable Destinacao destinacaoFinal){
-		List<Classe> classes = classeService.findByDestinacao(destinacaoFinal);
+	@GetMapping(value = "/busca") 
+	public ResponseEntity<List<ClasseDto>> findByDestinacao (@RequestParam String destinacaoFinal){
+		List<ClasseDto> classes = classeService
+				.findByDestinacao(destinacaoFinal)
+				.stream()
+				.map( c -> new ClasseDto(c) ) 
+				.collect(Collectors.toList());
+				
 		return ResponseEntity.ok().body(classes);
 	}
 
