@@ -28,6 +28,10 @@ public class ClasseService {
 		Optional<Classe> classe = classeRepository.findById(id);
 		return classe.get();
 	}
+
+	public Classe register(ClasseForm classeForm) {
+		return classeRepository.save(classeForm.toClasse());
+	}
 	
 	public List<Classe> findByDestinacao(String destinacaoFinal) 
 		throws DestinacaoInvalidaException {
@@ -49,10 +53,6 @@ public class ClasseService {
 				.collect(Collectors.toList());
 				
 		return classes;
-	};
-	
-	public Classe register(ClasseForm classeForm) {
-		return classeRepository.save(classeForm.toClasse());
 	}
-
+	
 }
