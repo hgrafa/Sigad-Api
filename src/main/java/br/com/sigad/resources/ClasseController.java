@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sigad.controllers.dto.ClasseDto;
+import br.com.sigad.controllers.form.ClasseForm;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.services.ClasseService;
@@ -24,7 +27,7 @@ public class ClasseController {
 	private ClasseService classeService;
 
 	@GetMapping
-	public ResponseEntity<List<ClasseDto>> findAll() {
+	public ResponseEntity<List<ClasseDto>> getAll() {
 		List<ClasseDto> classes = classeService
 				.findAll()
 				.stream()
@@ -35,13 +38,13 @@ public class ClasseController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ClasseDto> findById(@PathVariable Long id) {
+	public ResponseEntity<ClasseDto> getById (@PathVariable Long id) {
 		ClasseDto classe = new ClasseDto(classeService.findById(id));
 		return ResponseEntity.ok().body(classe);
 	}
 	
 	@GetMapping(value = "/busca") 
-	public ResponseEntity<List<ClasseDto>> findByDestinacao (@RequestParam String destinacaoFinal){
+	public ResponseEntity<List<ClasseDto>> getByDestinacao (@RequestParam String destinacaoFinal){
 		List<ClasseDto> classes = classeService
 				.findByDestinacao(destinacaoFinal)
 				.stream()
@@ -49,6 +52,12 @@ public class ClasseController {
 				.collect(Collectors.toList());
 				
 		return ResponseEntity.ok().body(classes);
+	}
+
+	@PostMapping(value = "/registrar")
+	public ResponseEntity<ClasseDto> addClasse (@RequestBody ClasseForm classeForm) {
+			ClasseDto classe = new ClasseDto( classeService.register(classeForm) );
+			return ResponseEntity.accepted().body(classe);
 	}
 
 }
