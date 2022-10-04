@@ -24,10 +24,10 @@ public class ClasseForm {
 	private String prazoIntermediaria;	
 	private String observacao;
 	
-	// boolean
+	// goes to boolean
 	private String indicadorAtiva;	
 	
-	// enums
+	// goes to enums
 	private String permissaoDeUso;
 
 	private String destinacaoFinal;
