@@ -11,6 +11,7 @@ import br.com.sigad.controllers.form.ClasseForm;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.repositories.ClasseRepository;
+import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
 
 @Service
 public class ClasseService {
@@ -28,10 +29,25 @@ public class ClasseService {
 		return classe.get();
 	}
 	
-	public List<Classe> findByDestinacao(Destinacao destinacaoFinal){
-		List<Classe> classes = classeRepository.findAll().stream()
-				.filter(c -> c.getDestinacaoFinal().equals(destinacaoFinal))
+	public List<Classe> findByDestinacao(String destinacaoFinal) 
+		throws DestinacaoInvalidaException {
+
+		Destinacao destinacao;
+
+		if(destinacaoFinal.equalsIgnoreCase("ELIMINAÇÃO")) {
+			destinacao = Destinacao.ELIMINACAO;
+		} else if (destinacaoFinal.equalsIgnoreCase("RECOLHIMENTO")){
+			destinacao = Destinacao.RECOLHIMENTO;
+		} else {
+			throw new DestinacaoInvalidaException(destinacaoFinal);
+		}
+
+		List<Classe> classes = classeRepository
+				.findAll()
+				.stream()
+				.filter(c -> c.getDestinacaoFinal().equals(destinacao))
 				.collect(Collectors.toList());
+				
 		return classes;
 	};
 	
