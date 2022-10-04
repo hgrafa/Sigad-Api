@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sigad.controllers.dto.ClasseDto;
 import br.com.sigad.controllers.form.ClasseForm;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.repositories.ClasseRepository;
+import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
 
 @Service
@@ -53,6 +55,22 @@ public class ClasseService {
 				.collect(Collectors.toList());
 				
 		return classes;
+	}
+
+	public ClasseDto updateClasse(Long id, ClasseForm classeUpdateForm) {
+
+		Classe origin = classeUpdateForm.toClasse();
+		Classe target = classeRepository
+			.findById(id)
+			.orElseThrow(() -> new ClasseNaoEncontradaException("Nao encontrada!"));
+
+		updateClasse(origin, target);
+
+		return null;
+	}
+
+	private void updateClasse(Classe origin, Classe target) {
+		// TODO
 	}
 	
 }
