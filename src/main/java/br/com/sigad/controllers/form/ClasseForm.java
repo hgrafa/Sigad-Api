@@ -44,13 +44,10 @@ public class ClasseForm {
 		classeEntity.setPrazoCorrente(prazoCorrente);
 		classeEntity.setPrazoIntermediaria(prazoIntermediaria);
 		classeEntity.setObservacao(observacao);
-		// ...
-		
-		// modelo de enum
 
 		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal.toUpperCase()));
 		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
-		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));//verify underline
+		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));
 		
 		return classeEntity;
 	}
