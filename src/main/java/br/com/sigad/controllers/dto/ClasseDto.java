@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public class ClasseDto {
 	
+	private Long id;
 	private Long codigo;
 	private String nome; 
 	private String prazoCorrente;
@@ -24,6 +25,7 @@ public class ClasseDto {
 	private Boolean indicadorAtiva;
 	
 	public ClasseDto(Classe classe) {
+		this.id = classe.getId();
 		this.codigo = classe.getCodigo();
 		this.nome = classe.getNome();
 		this.prazoCorrente = classe.getPrazoCorrente();
