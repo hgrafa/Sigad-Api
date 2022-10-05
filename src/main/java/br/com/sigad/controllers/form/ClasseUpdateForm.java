@@ -5,19 +5,15 @@ import javax.validation.constraints.NotBlank;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.entities.enums.GrauSigilo;
-import br.com.sigad.entities.enums.Permissao;
 import br.com.sigad.entities.enums.Sigilo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
-public class ClasseForm {
+public class ClasseUpdateForm {
 	
-	@NotBlank
 	private Long codigo;
-	
-	@NotBlank
 	private String nome;	
 	
 	private String prazoCorrente;
