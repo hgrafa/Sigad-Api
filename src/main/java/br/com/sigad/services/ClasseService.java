@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sigad.controllers.dto.ClasseDto;
 import br.com.sigad.controllers.form.ClasseForm;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
@@ -57,7 +56,8 @@ public class ClasseService {
 		return classes;
 	}
 
-	public ClasseDto updateClasse(Long id, ClasseForm classeUpdateForm) {
+	public Classe updateClasse(Long id, ClasseForm classeUpdateForm) 
+		throws ClasseNaoEncontradaException {
 
 		Classe origin = classeUpdateForm.toClasse();
 		Classe target = classeRepository

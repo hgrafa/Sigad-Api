@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.sigad.controllers.dto.ClasseDto;
 import br.com.sigad.controllers.form.ClasseForm;
 import br.com.sigad.entities.Classe;
-import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.services.ClasseService;
+import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 
 @RestController
 @RequestMapping(value = "api/0.0.1/classes")
@@ -62,8 +62,17 @@ public class ClasseController {
 	}
 
 	@PutMapping(value = "/atualizar/{id}")
-	public ResponseEntity<ClasseDto> updateClasse(@PathVariable Long id, @RequestBody ClasseForm classeUpdateForm) {
-		ClasseDto classe = classeService.updateClasse(id, classeUpdateForm);
+	public ResponseEntity<ClasseDto> updateClasse(@PathVariable Long id, @RequestBody ClasseForm classeUpdateForm) throws Exception {
+		ClasseDto classe;
+		
+		try {
+			Classe classeEntity = classeService.updateClasse(id, classeUpdateForm);
+			classe = new ClasseDto(classeEntity);
+		} catch(ClasseNaoEncontradaException e1) {
+			throw new ApiException(e1.getStatus(), e1.getMessage());
+		}
+
+		return ResponseEntity.ok().body(classe);
 	}
 
 }
