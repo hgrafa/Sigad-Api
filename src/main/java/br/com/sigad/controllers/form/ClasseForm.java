@@ -5,7 +5,6 @@ import javax.validation.constraints.NotBlank;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.entities.enums.GrauSigilo;
-import br.com.sigad.entities.enums.Permissao;
 import br.com.sigad.entities.enums.Sigilo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,7 +44,11 @@ public class ClasseForm {
 		classeEntity.setPrazoIntermediaria(prazoIntermediaria);
 		classeEntity.setObservacao(observacao);
 
-		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal.toUpperCase()));
+		destinacaoFinal = destinacaoFinal.equalsIgnoreCase("Eliminação") 
+													? "ELIMINACAO" : "RECOLHIMENTO";
+													
+		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal));
+
 		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
 		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));
 		
