@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import br.com.sigad.entities.enums.GrauSigilo;
+import br.com.sigad.entities.enums.Sigilo;
+import br.com.sigad.repositories.SubClasseRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sigad.controllers.dto.ClasseDto;
 import br.com.sigad.controllers.form.ClasseForm;
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
@@ -16,10 +19,11 @@ import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
 
 @Service
+@AllArgsConstructor
 public class ClasseService {
-
-	@Autowired
 	private ClasseRepository classeRepository;
+
+	private SubClasseRepository subClasseRepository;
 
 	public List<Classe> findAll() {
 		List<Classe> classes = classeRepository.findAll();
@@ -32,7 +36,7 @@ public class ClasseService {
 	}
 
 	public Classe register(ClasseForm classeForm) {
-		return classeRepository.save(classeForm.toClasse());
+		return classeRepository.save(toClasse(classeForm));
 	}
 	
 	public List<Classe> findByDestinacao(String destinacaoFinal) 
@@ -40,26 +44,19 @@ public class ClasseService {
 
 		Destinacao destinacao;
 
-		if(destinacaoFinal.equalsIgnoreCase("ELIMINAÇÃO")) {
-			destinacao = Destinacao.ELIMINACAO;
-		} else if (destinacaoFinal.equalsIgnoreCase("RECOLHIMENTO")){
-			destinacao = Destinacao.RECOLHIMENTO;
-		} else {
-			throw new DestinacaoInvalidaException(destinacaoFinal);
+		switch(destinacaoFinal.toUpperCase()){
+			case "ELIMINAÇÃO" -> destinacao = Destinacao.ELIMINACAO;
+			case "RECOLHIMENTO" -> destinacao = Destinacao.RECOLHIMENTO;
+			default -> throw new DestinacaoInvalidaException(destinacaoFinal);
 		}
 
-		List<Classe> classes = classeRepository
-				.findAll()
-				.stream()
-				.filter(c -> c.getDestinacaoFinal().equals(destinacao))
-				.collect(Collectors.toList());
-				
-		return classes;
+		return classeRepository.findAllByDestinacao(destinacao);
 	}
 
-	public ClasseDto updateClasse(Long id, ClasseForm classeUpdateForm) {
+	public Classe updateClasse(Long id, ClasseForm classeUpdateForm) 
+		throws ClasseNaoEncontradaException {
 
-		Classe origin = classeUpdateForm.toClasse();
+		Classe origin = toClasse(classeUpdateForm);
 		Classe target = classeRepository
 			.findById(id)
 			.orElseThrow(() -> new ClasseNaoEncontradaException("Nao encontrada!"));
@@ -71,6 +68,23 @@ public class ClasseService {
 
 	private void updateClasse(Classe origin, Classe target) {
 		// TODO
+	}
+
+	private Classe toClasse(ClasseForm classeForm) {
+		return Classe.builder()
+				.codigo(classeForm.getCodigo())
+				.nome(classeForm.getNome())
+				.indicadorAtiva(classeForm.getIndicadorAtiva().equalsIgnoreCase("ativo"))
+				.prazoCorrente(classeForm.getPrazoCorrente())
+				.prazoIntermediaria(classeForm.getPrazoIntermediaria())
+				.observacao(classeForm.getObservacao())
+				.destinacaoFinal(Destinacao.valueOf(classeForm
+					.getDestinacaoFinal()
+					.equalsIgnoreCase("Eliminação") ?
+					"ELIMINACAO" : "RECOLHIMENTO") )
+				.sigilo(Sigilo.valueOf(classeForm.getSigilo().toUpperCase()))
+				.grauSigilo(GrauSigilo.valueOf(classeForm.getGrauSigilo().toUpperCase()))
+				.build();
 	}
 	
 }

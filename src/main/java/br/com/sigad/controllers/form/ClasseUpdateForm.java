@@ -1,7 +1,5 @@
 package br.com.sigad.controllers.form;
 
-import javax.validation.constraints.NotBlank;
-
 import br.com.sigad.entities.Classe;
 import br.com.sigad.entities.enums.Destinacao;
 import br.com.sigad.entities.enums.GrauSigilo;
