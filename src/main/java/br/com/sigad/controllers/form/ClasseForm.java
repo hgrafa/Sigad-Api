@@ -1,58 +1,35 @@
 package br.com.sigad.controllers.form;
 
-import javax.validation.constraints.NotBlank;
 
-import br.com.sigad.entities.Classe;
-import br.com.sigad.entities.enums.Destinacao;
-import br.com.sigad.entities.enums.GrauSigilo;
-import br.com.sigad.entities.enums.Sigilo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+import javax.validation.constraints.NotBlank;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class ClasseForm {
-	
+
 	@NotBlank
 	private Long codigo;
-	
+
 	@NotBlank
-	private String nome;	
-	
+	private String nome;
+
 	private String prazoCorrente;
-	private String prazoIntermediaria;	
+	private String prazoIntermediaria;
 	private String observacao;
-	
+
 	// goes to boolean
-	private String indicadorAtiva;	
-	
+	private String indicadorAtiva;
+
 	// goes to enums
 	private String permissaoDeUso;
 
 	private String destinacaoFinal;
 	private String sigilo;
 	private String grauSigilo;
-	
-	public Classe toClasse() {
-		Classe classeEntity = new Classe();
-	
-		classeEntity.setIndicadorAtiva(indicadorAtiva.equalsIgnoreCase("ativo"));
-		
-		classeEntity.setCodigo(codigo);
-		classeEntity.setNome(nome);
-		classeEntity.setPrazoCorrente(prazoCorrente);
-		classeEntity.setPrazoIntermediaria(prazoIntermediaria);
-		classeEntity.setObservacao(observacao);
 
-		destinacaoFinal = destinacaoFinal.equalsIgnoreCase("Eliminação") 
-													? "ELIMINACAO" : "RECOLHIMENTO";
-													
-		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal));
-
-		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
-		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));
-		
-		return classeEntity;
-	}
-	
 }
