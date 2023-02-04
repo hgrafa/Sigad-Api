@@ -50,7 +50,7 @@ public class ClasseService {
 			default -> throw new DestinacaoInvalidaException(destinacaoFinal);
 		}
 
-		return classeRepository.findAllByDestinacao(destinacao);
+		return classeRepository.findByDestinacaoFinal(destinacao);
 	}
 
 	public Classe updateClasse(Long id, ClasseForm classeUpdateForm) 

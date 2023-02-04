@@ -13,6 +13,6 @@ import java.util.Optional;
 @Repository
 public interface ClasseRepository extends JpaRepository<Classe, Long>{
     Optional<Classe> findByNome(String nome);
-    List<Classe> findAllByDestinacao(Destinacao destinacao);
+    List<Classe> findByDestinacaoFinal(Destinacao destinacao);
 
 }

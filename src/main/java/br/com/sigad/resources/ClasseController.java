@@ -3,6 +3,7 @@ package br.com.sigad.resources;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +23,10 @@ import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 
 @RestController
 @RequestMapping(value = "api/0.0.1/classes")
+@AllArgsConstructor
 public class ClasseController {
 
-	@Autowired
+
 	private ClasseService classeService;
 
 	@GetMapping
@@ -49,7 +51,7 @@ public class ClasseController {
 		List<ClasseDto> classes = classeService
 				.findByDestinacao(destinacaoFinal)
 				.stream()
-				.map( c -> new ClasseDto(c) ) 
+				.map(ClasseDto::new)
 				.collect(Collectors.toList());
 				
 		return ResponseEntity.ok().body(classes);
