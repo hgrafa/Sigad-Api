@@ -1,9 +1,9 @@
-package br.com.sigad.controllers.form;
+package br.com.sigad.model.dto.input;
 
-import br.com.sigad.entities.Classe;
-import br.com.sigad.entities.enums.Destinacao;
-import br.com.sigad.entities.enums.GrauSigilo;
-import br.com.sigad.entities.enums.Sigilo;
+import br.com.sigad.model.entities.Classe;
+import br.com.sigad.model.enums.Destinacao;
+import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.enums.Sigilo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

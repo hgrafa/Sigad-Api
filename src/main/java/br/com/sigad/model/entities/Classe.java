@@ -1,4 +1,4 @@
-package br.com.sigad.entities;
+package br.com.sigad.model.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.sigad.entities.enums.Destinacao;
-import br.com.sigad.entities.enums.GrauSigilo;
-import br.com.sigad.entities.enums.Permissao;
-import br.com.sigad.entities.enums.Sigilo;
+import br.com.sigad.model.enums.Destinacao;
+import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.enums.Permissao;
+import br.com.sigad.model.enums.Sigilo;
 import lombok.*;
 
 @Entity
@@ -31,30 +31,13 @@ public class Classe {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id; 
-
+	private Long id;
 	private Long codigo;
 	private String nome;	
 	private String prazoCorrente;
 	private String prazoIntermediaria;	
 	private String observacao;
 	private Boolean indicadorAtiva;	
-
-	public Classe(Long codigo, String nome, String prazoCorrente, String prazoIntermediaria, String observacao,
-			Boolean indicadorAtiva, Permissao permissaoDeUso, Destinacao destinacaoFinal, Sigilo sigilo,
-			GrauSigilo grauSigilo) {
-		this.codigo = codigo;
-		this.nome = nome;
-		this.prazoCorrente = prazoCorrente;
-		this.prazoIntermediaria = prazoIntermediaria;
-		this.observacao = observacao;
-		this.indicadorAtiva = indicadorAtiva;
-		this.permissaoDeUso = permissaoDeUso;
-		this.destinacaoFinal = destinacaoFinal;
-		this.sigilo = sigilo;
-		this.grauSigilo = grauSigilo;
-		this.subClasses = new ArrayList<>();
-	}
 
 	@Enumerated(EnumType.STRING)
 	private Permissao permissaoDeUso;
@@ -69,6 +52,6 @@ public class Classe {
 	private GrauSigilo grauSigilo;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classe")
-	private List<SubClasse> subClasses;
+	private List<SubClasse> subClasses = new ArrayList<>();
 
 }

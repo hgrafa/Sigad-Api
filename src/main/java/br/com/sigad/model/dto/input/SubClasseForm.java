@@ -1,8 +1,8 @@
-package br.com.sigad.controllers.form;
+package br.com.sigad.model.dto.input;
 
 import javax.validation.constraints.NotBlank;
 
-import br.com.sigad.entities.SubClasse;
+import br.com.sigad.model.entities.SubClasse;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

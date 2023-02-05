@@ -1,16 +1,14 @@
-package br.com.sigad.controllers.dto;
+package br.com.sigad.model.dto.output;
 
-import br.com.sigad.entities.Classe;
-import br.com.sigad.entities.enums.Destinacao;
-import br.com.sigad.entities.enums.Permissao;
+import br.com.sigad.model.entities.Classe;
+import br.com.sigad.model.enums.Destinacao;
+import br.com.sigad.model.enums.Permissao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class ClasseDto {
-	
-	private Long id;
 	private Long codigo;
 	private String nome; 
 	private String prazoCorrente;
@@ -25,7 +23,6 @@ public class ClasseDto {
 	private Boolean indicadorAtiva;
 	
 	public ClasseDto(Classe classe) {
-		this.id = classe.getId();
 		this.codigo = classe.getCodigo();
 		this.nome = classe.getNome();
 		this.prazoCorrente = classe.getPrazoCorrente();
