@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sigad.entities.SubGrupo;
+import br.com.sigad.model.entities.SubGrupo;
 import br.com.sigad.repositories.SubGrupoRepository;
 
 @Service
