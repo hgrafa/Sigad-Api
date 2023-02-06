@@ -2,18 +2,16 @@ package br.com.sigad.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import br.com.sigad.entities.enums.GrauSigilo;
-import br.com.sigad.entities.enums.Sigilo;
+import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.enums.Sigilo;
 import br.com.sigad.repositories.SubClasseRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sigad.controllers.form.ClasseForm;
-import br.com.sigad.entities.Classe;
-import br.com.sigad.entities.enums.Destinacao;
+import br.com.sigad.model.dto.input.ClasseForm;
+import br.com.sigad.model.entities.Classe;
+import br.com.sigad.model.enums.Destinacao;
 import br.com.sigad.repositories.ClasseRepository;
 import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
@@ -22,7 +20,6 @@ import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
 @AllArgsConstructor
 public class ClasseService {
 	private ClasseRepository classeRepository;
-
 	private SubClasseRepository subClasseRepository;
 
 	public List<Classe> findAll() {
@@ -81,7 +78,7 @@ public class ClasseService {
 				.destinacaoFinal(Destinacao.valueOf(classeForm
 					.getDestinacaoFinal()
 					.equalsIgnoreCase("Eliminação") ?
-					"ELIMINACAO" : "RECOLHIMENTO") )
+					"ELIMINACAO" : "RECOLHIMENTO") ) // TODO pelo envio do DropdownOption
 				.sigilo(Sigilo.valueOf(classeForm.getSigilo().toUpperCase()))
 				.grauSigilo(GrauSigilo.valueOf(classeForm.getGrauSigilo().toUpperCase()))
 				.build();
