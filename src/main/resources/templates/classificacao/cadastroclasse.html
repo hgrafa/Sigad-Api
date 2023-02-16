@@ -104,8 +104,9 @@
 																	<label class="col-sm-2 col-form-label">Fase
 																		Corrente: </label>
 																	<div class="col-sm-10">
-																		<input type="text" class="form-control"
-																			placeholder="Quantidade de anos em fase corrente">
+																		<input name="prazoCorrente" th:field="*{prazoCorrente}" type="text"
+																			   placeholder="Quantidade de anos em fase corrente"
+																			   class="form-control" required>
 																	</div>
 																</div>
 
@@ -113,8 +114,9 @@
 																	<label class="col-sm-2 col-form-label">Fase
 																		Intermediária: </label>
 																	<div class="col-sm-10">
-																		<input type="text" class="form-control"
-																			placeholder="Quantidade de anos em fase intermediária">
+																		<input name="prazoIntermediaria" th:field="*{prazoIntermediaria}" type="text"
+																			   placeholder="Quantidade de anos em fase intermediária"
+																			   class="form-control" required>
 																	</div>
 																</div>
 
@@ -122,10 +124,12 @@
 																	<label class="col-sm-2 col-form-label">Destinação
 																		Final: </label>
 																	<div class="col-sm-10">
-																		<select name="select" class="form-control">
-																			<option value="opt1">Selecione</option>
-																			<option value="opt2">Eliminação</option>
-																			<option value="opt3">Guarda Permanente</option>
+																		<select th:field="*{destinacaoFinal}" name="select" class="form-control">
+																				<option th:each="opcao : ${opcoesDestinacaoFinal}"
+																					th:value="${opcao.value}"
+																					th:text="${opcao.text}"
+																					th:selected="${opcao.value == destinacaoFinal}"
+																				></option>
 																		</select>
 																	</div>
 																</div>
@@ -145,10 +149,12 @@
 																	<label class="col-sm-2 col-form-label">Nível de
 																		Acesso: </label>
 																	<div class="col-sm-10">
-																		<select name="select" class="form-control">
-																			<option value="opt1">Selecione</option>
-																			<option value="opt2">Ostensivo</option>
-																			<option value="opt3">Sigiloso</option>
+																		<select th:field="*{sigilo}" name="select" class="form-control">
+																			<option th:each="opcao : ${opcoesSigilo}"
+																				th:value="${opcao.value}"
+																				th:text="${opcao.text()}"
+																				th:selected="${opcao.value == sigilo}"
+																			></option>
 																		</select>
 																	</div>
 																</div>
@@ -157,12 +163,12 @@
 																	<label class="col-sm-2 col-form-label">Grau de
 																		Sigilo: </label>
 																	<div class="col-sm-10">
-																		<select name="select" class="form-control">
-																			<option value="opt1">Selecione</option>
-																			<option value="opt2">Confidencial</option>
-																			<option value="opt3">Reservado</option>
-																			<option value="opt4">Secreto</option>
-																			<option value="opt5">Ultra-Secreto</option>
+																		<select th:field="*{grauSigilo}" name="select" class="form-control">
+																			<option th:each="opcao : ${opcoesGrauSigilo}"
+																					th:value="${opcao.value}"
+																					th:text="${opcao.text}"
+																					th:selected="${opcao.value == grauSigilo}"
+																			></option>
 																		</select>
 																	</div>
 																</div>
@@ -180,7 +186,11 @@
 																<div class="form-group row">
 																	<label class="col-sm-2 col-form-label">Observação</label>
 																	<div class="col-sm-10">
-																		<textarea rows="2" cols="5" class="form-control"></textarea>
+
+																		<textarea name="observacao" th:field="*{observacao}" type="text"
+																				  rows="2" cols="5"
+																				  class="form-control">
+																		</textarea>
 																	</div>
 																</div>
 															</div>
