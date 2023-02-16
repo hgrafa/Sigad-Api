@@ -39,12 +39,12 @@ public class ClasseController {
 		List<DropdownOption> permissaoDeUsoOptions = Arrays.asList(
 				new DropdownOption("blank", "Selecione"),
 				new DropdownOption("Estrutura Hierárquica", "Estrutura Hierárquica"),
-				new DropdownOption("Estrutura Hierárquica", "Temporalidade e Destinação")
+				new DropdownOption("Temporalidade e Destinação", "Temporalidade e Destinação")
 		);
 
 		List<DropdownOption> destinacaoFinalOptions = Arrays.asList(
 				new DropdownOption("blank", "Selecione"),
-				new DropdownOption("Elmininação", "Eliminação"),
+				new DropdownOption("Eliminação", "Eliminação"),
 				new DropdownOption("Guarda Permanente", "Guarda Permanente")
 		);
 
