@@ -33,7 +33,7 @@ public class ClasseDto {
 		this.observacao = classe.getObservacao();
 		
 		this.permissaoDeUso = (classe.getPermissaoDeUso() == Permissao.ESTRUTURA_HIERARQUICA) ?
-				"Estrutura Hierarquica" : "Temporalidade e destinação";
+				"Estrutura Hierárquica" : "Temporalidade e Destinação";
 		
 		this.indicadorAtiva = classe.getIndicadorAtiva();
 		this.sigilo = classe.getSigilo().toString().toLowerCase();
