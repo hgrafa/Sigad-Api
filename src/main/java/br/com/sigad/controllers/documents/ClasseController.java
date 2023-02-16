@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,8 +42,31 @@ public class ClasseController {
 				new DropdownOption("Estrutura Hierárquica", "Temporalidade e Destinação")
 		);
 
+		List<DropdownOption> destinacaoFinalOptions = Arrays.asList(
+				new DropdownOption("blank", "Selecione"),
+				new DropdownOption("Elmininação", "Eliminação"),
+				new DropdownOption("Guarda Permanente", "Guarda Permanente")
+		);
+
+		List<DropdownOption> sigiloOptions = Arrays.asList(
+				new DropdownOption("blank", "Selecione"),
+				new DropdownOption("Ostensivo", "Ostensivo"),
+				new DropdownOption("Sigiloso", "Sigiloso")
+		);
+
+		List<DropdownOption> grauSigiloOptions = Arrays.asList(
+				new DropdownOption("blank", "Selecione"),
+				new DropdownOption("Confidencial", "Confidencial"),
+				new DropdownOption("Reservado", "Reservado"),
+				new DropdownOption("Secreto", "Secreto"),
+				new DropdownOption("Ultra-Secreto", "Ultra-Secreto")
+		);
+
+		model.addAttribute("opcoesGrauSigilo", grauSigiloOptions);
+		model.addAttribute("opcoesSigilo", sigiloOptions);
 		model.addAttribute("opcoesIndicadorAtiva", indicadorAtivaoptions);
 		model.addAttribute("opcoesPermissaoDeUso", permissaoDeUsoOptions);
+		model.addAttribute("opcoesDestinacaoFinal", destinacaoFinalOptions);
 		return "/classificacao/cadastroclasse";
 	}
 
