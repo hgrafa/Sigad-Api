@@ -3,6 +3,7 @@ package br.com.sigad.model.dto.input;
 import br.com.sigad.model.entities.Classe;
 import br.com.sigad.model.enums.Destinacao;
 import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.enums.Permissao;
 import br.com.sigad.model.enums.Sigilo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,7 +40,9 @@ public class ClasseUpdateForm {
 		classeEntity.setPrazoIntermediaria(prazoIntermediaria);
 		classeEntity.setObservacao(observacao);
 
-		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal.toUpperCase()));
+		classeEntity.setPermissaoDeUso(Permissao.valueOf(permissaoDeUso.toUpperCase()));
+
+		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal));
 		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
 		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));
 		
