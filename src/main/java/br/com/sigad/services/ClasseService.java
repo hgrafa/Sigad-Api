@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.enums.Permissao;
 import br.com.sigad.model.enums.Sigilo;
 import br.com.sigad.repositories.SubClasseRepository;
 import lombok.AllArgsConstructor;
@@ -72,6 +73,10 @@ public class ClasseService {
 				.codigo(classeForm.getCodigo())
 				.nome(classeForm.getNome())
 				.indicadorAtiva(classeForm.getIndicadorAtiva().equalsIgnoreCase("ativo"))
+				.permissaoDeUso(Permissao.valueOf(classeForm
+						.getPermissaoDeUso()
+						.equalsIgnoreCase("Estrutura Hierárquica") ?
+						"ESTRUTURA_HIERARQUICA" : "TEMPORALIDADE_E_DESTINACAO") )
 				.prazoCorrente(classeForm.getPrazoCorrente())
 				.prazoIntermediaria(classeForm.getPrazoIntermediaria())
 				.observacao(classeForm.getObservacao())
