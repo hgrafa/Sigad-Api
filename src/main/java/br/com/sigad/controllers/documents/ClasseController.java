@@ -16,15 +16,22 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "classes")
+@AllArgsConstructor
 public class ClasseController {
 	private ClasseService classeService;
 
+	@GetMapping
+	public String cadastroclasse(Model model, ClasseForm classeForm) {
+	/*
 	public ClasseController(ClasseService classeService) {
 		this.classeService = classeService;
 	}
 
 	@RequestMapping(value = "/teste", method = RequestMethod.GET)
+
 	public String cadastroclasse(Model model) {
+	*/
+
 		List<DropdownOption> indicadorAtivaoptions = Arrays.asList(
 			new DropdownOption("blank", "Selecione"),
 			new DropdownOption("ativa", "Ativa"),
@@ -62,7 +69,7 @@ public class ClasseController {
 		model.addAttribute("opcoesIndicadorAtiva", indicadorAtivaoptions);
 		model.addAttribute("opcoesPermissaoDeUso", permissaoDeUsoOptions);
 		model.addAttribute("opcoesDestinacaoFinal", destinacaoFinalOptions);
-		return "classificacao/cadastroclasse";
+		return "/classificacao/cadastroclasse";
 	}
 
 	@PostMapping @Transactional
