@@ -1,12 +1,11 @@
 package br.com.sigad.resources;
 
-import java.time.LocalDateTime;
-
-import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
+
+import java.time.LocalDateTime;
 
 @Getter @Setter 
 @NoArgsConstructor

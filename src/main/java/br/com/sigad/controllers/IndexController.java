@@ -1,6 +1,5 @@
 package br.com.sigad.controllers;
 
-import br.com.sigad.services.ClasseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

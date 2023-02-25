@@ -1,11 +1,9 @@
 package br.com.sigad.repositories;
 
+import br.com.sigad.model.entities.Classe;
 import br.com.sigad.model.enums.Destinacao;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import br.com.sigad.model.entities.Classe;
 
 import java.util.List;
 import java.util.Optional;

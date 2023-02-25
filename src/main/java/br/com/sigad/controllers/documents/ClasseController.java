@@ -3,33 +3,28 @@ package br.com.sigad.controllers.documents;
 import br.com.sigad.model.dto.input.ClasseForm;
 import br.com.sigad.model.util.DropdownOption;
 import br.com.sigad.services.ClasseService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/classes")
-@AllArgsConstructor
+@RequestMapping(value = "classes")
 public class ClasseController {
-
 	private ClasseService classeService;
 
-	@GetMapping
-	public String cadastroclasse(Model model, ClasseForm classeForm) {
+	public ClasseController(ClasseService classeService) {
+		this.classeService = classeService;
+	}
+
+	@RequestMapping(value = "/teste", method = RequestMethod.GET)
+	public String cadastroclasse(Model model) {
 		List<DropdownOption> indicadorAtivaoptions = Arrays.asList(
 			new DropdownOption("blank", "Selecione"),
 			new DropdownOption("ativa", "Ativa"),
@@ -67,7 +62,7 @@ public class ClasseController {
 		model.addAttribute("opcoesIndicadorAtiva", indicadorAtivaoptions);
 		model.addAttribute("opcoesPermissaoDeUso", permissaoDeUsoOptions);
 		model.addAttribute("opcoesDestinacaoFinal", destinacaoFinalOptions);
-		return "/classificacao/cadastroclasse";
+		return "classificacao/cadastroclasse";
 	}
 
 	@PostMapping @Transactional
