@@ -1,11 +1,11 @@
 package br.com.sigad.model.dto.input;
 
-import javax.validation.constraints.NotBlank;
-
 import br.com.sigad.model.entities.SubClasse;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Getter @Setter @NoArgsConstructor
 public class SubClasseForm {

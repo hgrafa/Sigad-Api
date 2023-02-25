@@ -1,24 +1,14 @@
 package br.com.sigad.model.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import br.com.sigad.model.enums.Destinacao;
 import br.com.sigad.model.enums.GrauSigilo;
 import br.com.sigad.model.enums.Permissao;
 import br.com.sigad.model.enums.Sigilo;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "classes")
