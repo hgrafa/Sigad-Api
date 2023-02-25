@@ -6,20 +6,20 @@
 
 <body>
 	<!-- Pre-loader start -->
-	<div th:replace="fragments/preloaderstart :: preloaderstart"></div>
+	<div th:replace="~{fragments/preloaderstart :: preloaderstart}"></div>
 	<!-- Pre-loader end -->
 
 	<div id="pcoded" class="pcoded">
 		<div class="pcoded-overlay-box"></div>
 		<div class="pcoded-container navbar-wrapper">
 			<!-- NavBar -->
-			<div th:replace="fragments/navbar :: navbar"></div>
+			<div th:replace="~{fragments/navbar :: navbar}"></div>
 			<!-- NavBar -->
 
 			<div class="pcoded-main-container">
 				<div class="pcoded-wrapper">
 					<!-- SideBar -->
-					<div th:replace="fragments/sidebar :: sidebar"></div>
+					<div th:replace="~{fragments/sidebar :: sidebar}"></div>
 					<!-- SideBar -->
 					<div class="pcoded-content">
 						<!-- Page-header start -->
@@ -51,7 +51,7 @@
 	</div>
 
 	<!-- Body Scripts -->
-	<div th:replace="fragments/bodyscripts :: bodyscripts"></div>
+	<div th:replace="~{fragments/bodyscripts :: bodyscripts}"></div>
 	<!-- Body Scripts -->
 
 </body>
