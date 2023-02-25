@@ -59,7 +59,7 @@ public class ClasseController {
 				new DropdownOption("Confidencial", "Confidencial"),
 				new DropdownOption("Reservado", "Reservado"),
 				new DropdownOption("Secreto", "Secreto"),
-				new DropdownOption("Ultra-Secreto", "Ultra-Secreto")
+				new DropdownOption("Ultra_Secreto", "Ultra-Secreto")
 		);
 
 		model.addAttribute("opcoesGrauSigilo", grauSigiloOptions);
