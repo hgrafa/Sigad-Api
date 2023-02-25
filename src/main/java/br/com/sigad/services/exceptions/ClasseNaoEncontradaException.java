@@ -1,8 +1,7 @@
 package br.com.sigad.services.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 public class ClasseNaoEncontradaException extends RuntimeException {

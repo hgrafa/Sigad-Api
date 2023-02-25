@@ -1,13 +1,12 @@
 package br.com.sigad.services;
 
-import java.util.List;
-import java.util.Optional;
-
+import br.com.sigad.model.entities.SubClasse;
+import br.com.sigad.repositories.SubClasseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sigad.model.entities.SubClasse;
-import br.com.sigad.repositories.SubClasseRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SubClasseService {

@@ -1,13 +1,12 @@
 package br.com.sigad.services;
 
-import java.util.List;
-import java.util.Optional;
-
+import br.com.sigad.model.entities.Grupo;
+import br.com.sigad.repositories.GrupoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sigad.model.entities.Grupo;
-import br.com.sigad.repositories.GrupoRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GrupoService {

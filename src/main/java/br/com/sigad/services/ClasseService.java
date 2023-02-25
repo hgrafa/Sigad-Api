@@ -1,21 +1,21 @@
 package br.com.sigad.services;
 
-import java.util.List;
-import java.util.Optional;
-
-import br.com.sigad.model.enums.GrauSigilo;
-import br.com.sigad.model.enums.Permissao;
-import br.com.sigad.model.enums.Sigilo;
-import br.com.sigad.repositories.SubClasseRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import br.com.sigad.model.dto.input.ClasseForm;
 import br.com.sigad.model.entities.Classe;
 import br.com.sigad.model.enums.Destinacao;
+import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.enums.Permissao;
+import br.com.sigad.model.enums.Sigilo;
 import br.com.sigad.repositories.ClasseRepository;
+import br.com.sigad.repositories.SubClasseRepository;
 import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
+import br.com.sigad.util.NullableUtils;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -54,18 +54,22 @@ public class ClasseService {
 	public Classe updateClasse(Long id, ClasseForm classeUpdateForm) 
 		throws ClasseNaoEncontradaException {
 
-		Classe origin = toClasse(classeUpdateForm);
-		Classe target = classeRepository
+		Classe source = toClasse(classeUpdateForm);
+		Classe destination = classeRepository
 			.findById(id)
 			.orElseThrow(() -> new ClasseNaoEncontradaException("Nao encontrada!"));
 
-		updateClasse(origin, target);
+		updateClasse(source, destination);
 
-		return null;
+		return classeRepository.save(destination);
 	}
 
-	private void updateClasse(Classe origin, Classe target) {
-		// TODO
+	private void updateClasse(Classe source, Classe destination) {
+		destination.setNome(NullableUtils.getNewValueIfNotNull(destination.getNome(), source.getNome()));
+		destination.setCodigo(NullableUtils.getNewValueIfNotNull(destination.getCodigo(), source.getCodigo()));
+		destination.setObservacao(NullableUtils.getNewValueIfNotNull(destination.getObservacao(), source.getObservacao()));
+		destination.setSigilo(NullableUtils.getNewValueIfNotNull(destination.getSigilo(), source.getSigilo()));
+		// TODO completar campos a serem atualizados
 	}
 
 	private Classe toClasse(ClasseForm classeForm) {
