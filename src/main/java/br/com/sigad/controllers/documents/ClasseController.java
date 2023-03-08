@@ -1,8 +1,7 @@
 package br.com.sigad.controllers.documents;
 
 import br.com.sigad.model.dto.input.ClasseForm;
-import br.com.sigad.model.enums.GrauSigilo;
-import br.com.sigad.model.enums.Sigilo;
+import br.com.sigad.model.enums.*;
 import br.com.sigad.model.util.DropdownOption;
 import br.com.sigad.services.ClasseService;
 import br.com.sigad.util.Dropdown;
@@ -68,9 +67,14 @@ public class ClasseController {
 //				new DropdownOption("Ultra_Secreto", "Ultra-Secreto")
 		));
 
+
+		Dropdown.addEnumsOptions(indicadorAtivaoptions, IndicadorAtiva.values());
+		Dropdown.addEnumsOptions(permissaoDeUsoOptions, Permissao.values());
+		Dropdown.addEnumsOptions(destinacaoFinalOptions, Destinacao.values());
 		Dropdown.addEnumsOptions(grauSigiloOptions, GrauSigilo.values());
 		Dropdown.addEnumsOptions(sigiloOptions, Sigilo.values());
-		Dropdown.addEnumsOptions(sigiloOptions, Sigilo.values());
+
+
 		// TODO adicionar este método para outras enums
 
 
