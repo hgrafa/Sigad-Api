@@ -1,17 +1,21 @@
 package br.com.sigad.controllers.documents;
 
 import br.com.sigad.model.dto.input.ClasseForm;
+import br.com.sigad.model.entities.Classe;
 import br.com.sigad.model.enums.*;
 import br.com.sigad.model.util.DropdownOption;
+import br.com.sigad.repositories.ClasseRepository;
 import br.com.sigad.services.ClasseService;
 import br.com.sigad.util.Dropdown;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +26,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ClasseController {
 	private ClasseService classeService;
+	@Autowired
+	private ClasseRepository classeRepository;
 
 	@GetMapping
 	public String cadastroclasse(Model model, ClasseForm classeForm) {
@@ -115,6 +121,14 @@ public class ClasseController {
 	@ExceptionHandler(Exception.class)
 	public String onError() {
 		return "";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value="/classes")
+	public ModelAndView listClasses(){
+		ModelAndView andView = new ModelAndView("/classes");
+		Iterable<Classe> classeIterable = classeRepository.findAll();
+		andView.addObject("listClasses", classeIterable);
+		return andView;
 	}
 
 }
