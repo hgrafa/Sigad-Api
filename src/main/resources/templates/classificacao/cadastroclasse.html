@@ -243,18 +243,16 @@
 																			<th>Nome da Classe</th>
 																			<th>Informações</th>
 																			<th>Editar</th>
-																			<th>Excluir</th>
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<tr>
-																			<th scope="row">1</th>
-																			<th scope="row">000</th>
-																			<td>Mark</td>
-																			<td>Otto</td>
-																			<td>@mdo</td>
-																			<td>@mdo</td>
-																		</tr>
+																	<tr th:each="classe : ${classes}">
+																		<td th:text="${classe.id}"></td>
+																		<td th:text="${classe.codigo}"></td>
+																		<td th:text="${classe.nome}"></td>
+																		<td> BOTÃO </td>
+																		<td> EDITAR </td>
+																	</tr>
 																	</tbody>
 																</table>
 															</div>
@@ -293,7 +291,7 @@
 			let grauSigilo = document.querySelector("#grau-sigilo-form");
 			let sigiloInput = document.querySelector("#grau-sigilo-input");
 
-			if (sigilo.value === "Sigiloso") {
+			if (sigilo.value === "SIGILOSO") {
 				// sigiloInput.removeChild(noneOption);
 				sigiloInput.classList.remove("disabled");
 				sigiloInput.removeAttribute("disabled");
