@@ -1,8 +1,9 @@
 package br.com.sigad.model.enums;
 
 
-public enum EventosGerenciamento {
-	
+public enum EventosGerenciamento  {
+	// TODO adicionar getter + AllArgs + atributo text
+
 	EGC1("Abertura de classe"),
 	EGC2("Desativação de classe"),
 	EGC3("Reativação de classe"),
@@ -20,6 +21,6 @@ public enum EventosGerenciamento {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	private String text;
 
 }
