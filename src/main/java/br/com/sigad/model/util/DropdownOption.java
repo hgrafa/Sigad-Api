@@ -5,4 +5,8 @@ public record DropdownOption(
         String text
 ) {
 
+    public DropdownOption(String sharedValue) {
+        this(sharedValue, sharedValue);
+    }
+
 }

@@ -4,5 +4,5 @@ public enum GrauSigilo {
 	CONFIDENCIAL,
 	RESERVADO,
 	SECRETO,
-	ULTRA_SECRETO
+	ULTRA_SECRETO;
 }
