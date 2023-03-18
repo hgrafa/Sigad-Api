@@ -1,11 +1,9 @@
 package br.com.sigad.services;
 
 import br.com.sigad.model.dto.input.ClasseForm;
+import br.com.sigad.model.dto.output.ClasseDto;
 import br.com.sigad.model.entities.Classe;
-import br.com.sigad.model.enums.Destinacao;
-import br.com.sigad.model.enums.GrauSigilo;
-import br.com.sigad.model.enums.Permissao;
-import br.com.sigad.model.enums.Sigilo;
+import br.com.sigad.model.enums.*;
 import br.com.sigad.repositories.ClasseRepository;
 import br.com.sigad.repositories.SubClasseRepository;
 import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
@@ -23,8 +21,12 @@ public class ClasseService {
 	private ClasseRepository classeRepository;
 	private SubClasseRepository subClasseRepository;
 
-	public List<Classe> findAll() {
-		List<Classe> classes = classeRepository.findAll();
+	public List<ClasseDto> findAll() {
+		var classes = classeRepository
+				.findAll()
+				.stream()
+				.map(ClasseDto::new)
+				.toList();
 		return classes;
 	}
 	
@@ -73,21 +75,24 @@ public class ClasseService {
 	}
 
 	private Classe toClasse(ClasseForm classeForm) {
+
+		// TODO ver se é ostensivo e não precisa do grauSigilo
+		// TODO melhorar usando getAbsoluteText e getParsedText
 		return Classe.builder()
 				.codigo(classeForm.getCodigo())
 				.nome(classeForm.getNome())
-				.indicadorAtiva(classeForm.getIndicadorAtiva().equalsIgnoreCase("ativo"))
+				.indicadorAtiva(IndicadorAtiva.valueOf(classeForm.getIndicadorAtiva()))
 				.permissaoDeUso(Permissao.valueOf(classeForm
 						.getPermissaoDeUso()
 						.equalsIgnoreCase("Estrutura Hierárquica") ?
-						"ESTRUTURA_HIERARQUICA" : "TEMPORALIDADE_E_DESTINACAO") )
+						"ESTRUTURA_HIERARQUICA" : "TEMPORALIDADE_E_DESTINACAO"))
 				.prazoCorrente(classeForm.getPrazoCorrente())
 				.prazoIntermediaria(classeForm.getPrazoIntermediaria())
 				.observacao(classeForm.getObservacao())
 				.destinacaoFinal(Destinacao.valueOf(classeForm
-					.getDestinacaoFinal()
-					.equalsIgnoreCase("Eliminação") ?
-					"ELIMINACAO" : "RECOLHIMENTO") ) // TODO pelo envio do DropdownOption
+						.getDestinacaoFinal()
+						.equalsIgnoreCase("Eliminação") ?
+						"ELIMINACAO" : "RECOLHIMENTO")) // TODO pelo envio do DropdownOption
 				.sigilo(Sigilo.valueOf(classeForm.getSigilo().toUpperCase()))
 				.grauSigilo(GrauSigilo.valueOf(classeForm.getGrauSigilo().toUpperCase()))
 				.build();
