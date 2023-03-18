@@ -1,9 +1,7 @@
 package br.com.sigad.model.entities;
 
-import br.com.sigad.model.enums.Destinacao;
-import br.com.sigad.model.enums.GrauSigilo;
-import br.com.sigad.model.enums.Permissao;
-import br.com.sigad.model.enums.Sigilo;
+import br.com.sigad.model.enums.*;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,7 +25,7 @@ public class Classe {
 	private String prazoCorrente;
 	private String prazoIntermediaria;	
 	private String observacao;
-	private Boolean indicadorAtiva;	
+	private IndicadorAtiva indicadorAtiva;
 
 	@Enumerated(EnumType.STRING)
 	private Permissao permissaoDeUso;
@@ -38,7 +36,7 @@ public class Classe {
 	@Enumerated(EnumType.STRING)
 	private Sigilo sigilo;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING) @Nullable
 	private GrauSigilo grauSigilo;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classe")
