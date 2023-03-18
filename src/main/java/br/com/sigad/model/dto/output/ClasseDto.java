@@ -9,6 +9,7 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class ClasseDto {
+	private Long id;
 	private Long codigo;
 	private String nome; 
 	private String prazoCorrente;
@@ -17,26 +18,19 @@ public class ClasseDto {
 	private String observacao;
 	private String sigilo;
 	private String grauSigilo;
-	
-	/*Enum*/
 	private String permissaoDeUso;	
-	private Boolean indicadorAtiva;
+	private String indicadorAtiva;
 	
 	public ClasseDto(Classe classe) {
+		this.id = classe.getId();
 		this.codigo = classe.getCodigo();
 		this.nome = classe.getNome();
 		this.prazoCorrente = classe.getPrazoCorrente();
-
-		this.destinacaoFinal = (classe.getDestinacaoFinal() == Destinacao.ELIMINACAO) ? 
-				"Eliminação" : "Recolhimento";
-		
+		this.destinacaoFinal = classe.getDestinacaoFinal().getParsedText();
 		this.observacao = classe.getObservacao();
-		
-		this.permissaoDeUso = (classe.getPermissaoDeUso() == Permissao.ESTRUTURA_HIERARQUICA) ?
-				"Estrutura Hierárquica" : "Temporalidade e Destinação";
-		
-		this.indicadorAtiva = classe.getIndicadorAtiva();
-		this.sigilo = classe.getSigilo().toString().toLowerCase();
-		this.grauSigilo = classe.getGrauSigilo().toString().toLowerCase();
+		this.permissaoDeUso = classe.getPermissaoDeUso().getParsedText();
+		this.indicadorAtiva = classe.getIndicadorAtiva().getParsedText();
+		this.sigilo = classe.getSigilo().getParsedText();
+		this.grauSigilo = classe.getGrauSigilo().getParsedText();
 	}
 }
