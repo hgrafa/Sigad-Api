@@ -25,54 +25,16 @@ import java.util.List;
 @RequestMapping(value = "classes")
 @AllArgsConstructor
 public class ClasseController {
+
 	private ClasseService classeService;
-	@Autowired
-	private ClasseRepository classeRepository;
 
 	@GetMapping
 	public String cadastroclasse(Model model, ClasseForm classeForm) {
-	/*
-	public ClasseController(ClasseService classeService) {
-		this.classeService = classeService;
-	}
-
-	@RequestMapping(value = "/teste", method = RequestMethod.GET)
-
-	public String cadastroclasse(Model model) {
-	*/
-
-		List<DropdownOption> indicadorAtivaoptions = new ArrayList<>(Arrays.asList(
-			new DropdownOption("blank", "Selecione")
-//			new DropdownOption("ativa", "Ativa"),
-//			new DropdownOption("inativa", "Inativa")
-		));
-
-		List<DropdownOption> permissaoDeUsoOptions = new ArrayList<>(Arrays.asList(
-				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Estrutura Hierárquica", "Estrutura Hierárquica"),
-//				new DropdownOption("Temporalidade e Destinação", "Temporalidade e Destinação")
-		));
-
-		List<DropdownOption> destinacaoFinalOptions = new ArrayList<>(Arrays.asList(
-				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Eliminação", "Eliminação"),
-//				new DropdownOption("Guarda Permanente", "Guarda Permanente")
-		));
-
-		List<DropdownOption> sigiloOptions = new ArrayList<>(Arrays.asList(
-				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Ostensivo", "Ostensivo"),
-//				new DropdownOption("Sigiloso", "Sigiloso")
-		));
-
-		List<DropdownOption> grauSigiloOptions = new ArrayList<>(Arrays.asList(
-				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Confidencial", "Confidencial"),
-//				new DropdownOption("Reservado", "Reservado"),
-//				new DropdownOption("Secreto", "Secreto"),
-//				new DropdownOption("Ultra_Secreto", "Ultra-Secreto")
-		));
-
+		var indicadorAtivaoptions = new ArrayList<DropdownOption>();
+		var permissaoDeUsoOptions = new ArrayList<DropdownOption>();
+		var destinacaoFinalOptions = new ArrayList<DropdownOption>();
+		var sigiloOptions = new ArrayList<DropdownOption>();
+		var grauSigiloOptions = new ArrayList<DropdownOption>();
 
 		Dropdown.addEnumsOptions(indicadorAtivaoptions, IndicadorAtiva.values());
 		Dropdown.addEnumsOptions(permissaoDeUsoOptions, Permissao.values());
@@ -81,14 +43,12 @@ public class ClasseController {
 		Dropdown.addEnumsOptions(sigiloOptions, Sigilo.values());
 
 
-		// TODO adicionar este método para outras enums
-
-
 		model.addAttribute("opcoesGrauSigilo", grauSigiloOptions);
 		model.addAttribute("opcoesSigilo", sigiloOptions);
 		model.addAttribute("opcoesIndicadorAtiva", indicadorAtivaoptions);
 		model.addAttribute("opcoesPermissaoDeUso", permissaoDeUsoOptions);
 		model.addAttribute("opcoesDestinacaoFinal", destinacaoFinalOptions);
+		model.addAttribute("classes", classeService.findAll());
 		return "/classificacao/cadastroclasse";
 	}
 
@@ -121,14 +81,6 @@ public class ClasseController {
 	@ExceptionHandler(Exception.class)
 	public String onError() {
 		return "";
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value="/classes")
-	public ModelAndView listClasses(){
-		ModelAndView andView = new ModelAndView("/classes");
-		Iterable<Classe> classeIterable = classeRepository.findAll();
-		andView.addObject("listClasses", classeIterable);
-		return andView;
 	}
 
 }
