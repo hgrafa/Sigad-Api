@@ -29,24 +29,4 @@ public class ClasseUpdateForm {
 	private String sigilo;
 	private String grauSigilo;
 	
-	public Classe toClasse() {
-		Classe classeEntity = new Classe();
-	
-		classeEntity.setIndicadorAtiva(indicadorAtiva.equalsIgnoreCase("ativo"));
-		
-		classeEntity.setCodigo(codigo);
-		classeEntity.setNome(nome);
-		classeEntity.setPrazoCorrente(prazoCorrente);
-		classeEntity.setPrazoIntermediaria(prazoIntermediaria);
-		classeEntity.setObservacao(observacao);
-
-		classeEntity.setPermissaoDeUso(Permissao.valueOf(permissaoDeUso.toUpperCase()));
-
-		classeEntity.setDestinacaoFinal(Destinacao.valueOf(destinacaoFinal));
-		classeEntity.setSigilo(Sigilo.valueOf(sigilo.toUpperCase()));
-		classeEntity.setGrauSigilo(GrauSigilo.valueOf(grauSigilo.toUpperCase()));
-		
-		return classeEntity;
-	}
-	
 }
