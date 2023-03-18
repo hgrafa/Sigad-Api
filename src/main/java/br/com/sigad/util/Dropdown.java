@@ -1,6 +1,7 @@
 package br.com.sigad.util;
 
 import br.com.sigad.model.enums.GrauSigilo;
+import br.com.sigad.model.interfaces.EnumWithText;
 import br.com.sigad.model.util.DropdownOption;
 
 import java.util.Arrays;
@@ -8,12 +9,13 @@ import java.util.List;
 
 public class Dropdown {
 
-    public static <E extends Enum<E>> void addEnumsOptions(
+    public static <E extends Enum<E> & EnumWithText > void addEnumsOptions(
             List<DropdownOption> options,
             E[] enums) {
 
+        options.add(new DropdownOption("blank", "Selecione"));
         Arrays.stream(enums)
-                .map(e -> new DropdownOption(parseEnumText(e.name())))
+                .map(DropdownOption::new)
                 .forEach(options::add);
     }
 
