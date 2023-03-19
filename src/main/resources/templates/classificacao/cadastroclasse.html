@@ -295,7 +295,11 @@
 				// sigiloInput.removeChild(noneOption);
 				sigiloInput.classList.remove("disabled");
 				sigiloInput.removeAttribute("disabled");
-			} else {
+			} else if(sigilo.value === "OSTENSIVO" && !sigiloInput.disabled){
+				sigiloInput.value = "Selecione";
+				sigiloInput.classList.add("disabled");
+				sigiloInput.setAttribute("disabled", true)
+			}else {
 				// sigiloInput.insertBefore(noneOption, sigiloInput.firstChild);
 				sigiloInput.classList.add("disabled");
 				sigiloInput.setAttribute("disabled", true);
