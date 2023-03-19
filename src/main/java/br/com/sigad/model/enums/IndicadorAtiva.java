@@ -6,7 +6,6 @@ import lombok.Getter;
 
 @Getter @AllArgsConstructor
 public enum IndicadorAtiva implements EnumWithText {
-    // TODO adicionar getter + AllArgs + atributo text
 
     ATIVO("Ativo"),
     INATIVO("Inativo");
