@@ -18,7 +18,7 @@ import java.util.List;
 public class Classe {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long codigo;
 	private String nome;	
