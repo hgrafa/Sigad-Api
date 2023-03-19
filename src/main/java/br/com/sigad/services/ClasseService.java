@@ -87,7 +87,11 @@ public class ClasseService {
 
 	private Classe toClasse(ClasseForm classeForm) {
 
-		// TODO ver se é ostensivo e não precisa do grauSigilo
+		// TODO ver se é ostensivo e não precisa do grauSigilo OK
+		GrauSigilo grauSigilo = classeForm.getGrauSigilo() != null ?
+				GrauSigilo.valueOf(classeForm.getGrauSigilo().toUpperCase()) :
+				null;
+
 		// TODO melhorar usando getAbsoluteText e getParsedText
 		return Classe.builder()
 				.codigo(classeForm.getCodigo())
@@ -105,7 +109,9 @@ public class ClasseService {
 						.equalsIgnoreCase("Eliminação") ?
 						"ELIMINACAO" : "RECOLHIMENTO")) // TODO pelo envio do DropdownOption
 				.sigilo(Sigilo.valueOf(classeForm.getSigilo().toUpperCase()))
-				.grauSigilo(GrauSigilo.valueOf(classeForm.getGrauSigilo().toUpperCase()))
+				.grauSigilo(grauSigilo)
+
+				//.grauSigilo(GrauSigilo.valueOf(classeForm.getGrauSigilo().toUpperCase()))
 				.build();
 	}
 	
