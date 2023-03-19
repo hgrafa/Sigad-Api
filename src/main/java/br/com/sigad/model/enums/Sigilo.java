@@ -4,9 +4,9 @@ import br.com.sigad.model.interfaces.EnumWithText;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
+@Getter @AllArgsConstructor
 public enum Sigilo implements EnumWithText {
-	// TODO adicionar getter + AllArgs + atributo text
+
 	OSTENSIVO ("Ostensivo"),
 	SIGILOSO ("Sigiloso");
 
