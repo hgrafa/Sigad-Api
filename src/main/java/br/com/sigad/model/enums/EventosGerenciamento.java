@@ -1,8 +1,11 @@
 package br.com.sigad.model.enums;
 
+import br.com.sigad.model.interfaces.EnumWithText;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-public enum EventosGerenciamento  {
-	// TODO adicionar getter + AllArgs + atributo text
+@Getter @AllArgsConstructor
+public enum EventosGerenciamento implements EnumWithText {
 
 	EGC1("Abertura de classe"),
 	EGC2("Desativação de classe"),
@@ -17,10 +20,12 @@ public enum EventosGerenciamento  {
 	EGC11("Alteração de destinação"),
 	EGC12("Alteração de sigilo associado à classe");
 
-	EventosGerenciamento(String string) {
-		// TODO Auto-generated constructor stub
-	}
+	private String absoluteText;
+	private String parsedText;
 
-	private String text;
+	EventosGerenciamento(String text) {
+		this.parsedText = text;
+		this.absoluteText = text.replaceAll(" ", "_").toUpperCase();
+	}
 
 }
