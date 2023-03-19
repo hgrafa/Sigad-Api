@@ -6,7 +6,6 @@ import lombok.Getter;
 
 @Getter @AllArgsConstructor
 public enum GrauSigilo implements EnumWithText {
-	// TODO adicionar getter + AllArgs + atributo text
 
 	CONFIDENCIAL("Confidencial"),
 	RESERVADO("Reservado"),
