@@ -22,18 +22,15 @@ public class ClasseForm {
 	private String prazoIntermediaria;
 	private String observacao;
 
-	// goes to boolean
-	@NotBlank(message = "O indicador ativa deve estar em branco.")
+	@NotBlank(message = "O indicador da classe ativa ou inativa deve ser preenchido.")
 	private String indicadorAtiva;
 
-	// goes to enums
-	// TODO
-	@NotBlank(message = "O código nome deve estar em branco.")
+	@NotBlank(message = "A permissão de uso da classe deve ser preenchida.")
 	private String permissaoDeUso;
 
 	private String destinacaoFinal;
 
-	@NotBlank(message = "O código nome deve estar em branco.")
+	@NotBlank(message = "Selecione o nível de sigilo da classe.")
 	private String sigilo;
 
 	private String grauSigilo;
