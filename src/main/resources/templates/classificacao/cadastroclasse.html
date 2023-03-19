@@ -291,19 +291,25 @@
 			let grauSigilo = document.querySelector("#grau-sigilo-form");
 			let sigiloInput = document.querySelector("#grau-sigilo-input");
 
-			if (sigilo.value === "SIGILOSO") {
-				// sigiloInput.removeChild(noneOption);
+			if (sigilo.value === "SIGILOSO" && sigiloInput.disabled){
+				if(sigilo.previousValue === "OSTENSIVO") {
+					sigiloInput.value = "Selecione";
+				}
 				sigiloInput.classList.remove("disabled");
 				sigiloInput.removeAttribute("disabled");
-			} else if(sigilo.value === "OSTENSIVO" && !sigiloInput.disabled){
-				sigiloInput.value = "Selecione";
-				sigiloInput.classList.add("disabled");
-				sigiloInput.setAttribute("disabled", true)
 			}else {
 				// sigiloInput.insertBefore(noneOption, sigiloInput.firstChild);
+				sigiloInput.value = "Selecione";
 				sigiloInput.classList.add("disabled");
 				sigiloInput.setAttribute("disabled", true);
 			}
+
+			if(sigilo.previousValue !== sigilo.value){
+				sigiloInput.value = "Selecione";
+				sigilo.previousValue = sigilo.value;
+			}
+
+			sigilo.previousValue = sigilo.value;
 		}
 	</script>
 	<!-- Body Scripts -->
