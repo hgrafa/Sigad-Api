@@ -31,6 +31,6 @@ public class ClasseDto {
 		this.permissaoDeUso = classe.getPermissaoDeUso().getParsedText();
 		this.indicadorAtiva = classe.getIndicadorAtiva().getParsedText();
 		this.sigilo = classe.getSigilo().getParsedText();
-		this.grauSigilo = classe.getGrauSigilo().getParsedText();
+		this.grauSigilo = (classe.getGrauSigilo() != null) ? classe.getGrauSigilo().getParsedText() : null;
 	}
 }
