@@ -6,7 +6,6 @@ import lombok.Getter;
 
 @Getter @AllArgsConstructor
 public enum Destinacao implements EnumWithText {
-	// TODO adicionar getter + AllArgs + atributo text
 
 	RECOLHIMENTO("Recolhimento"),
 	ELIMINACAO("Eliminação");
