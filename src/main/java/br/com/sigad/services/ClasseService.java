@@ -9,6 +9,7 @@ import br.com.sigad.repositories.SubClasseRepository;
 import br.com.sigad.services.exceptions.ClasseNaoEncontradaException;
 import br.com.sigad.services.exceptions.DestinacaoInvalidaException;
 import br.com.sigad.util.NullableUtils;
+import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -67,11 +68,21 @@ public class ClasseService {
 	}
 
 	private void updateClasse(Classe source, Classe destination) {
-		destination.setNome(NullableUtils.getNewValueIfNotNull(destination.getNome(), source.getNome()));
+		//Cadastro Classe
 		destination.setCodigo(NullableUtils.getNewValueIfNotNull(destination.getCodigo(), source.getCodigo()));
-		destination.setObservacao(NullableUtils.getNewValueIfNotNull(destination.getObservacao(), source.getObservacao()));
+		destination.setNome(NullableUtils.getNewValueIfNotNull(destination.getNome(), source.getNome()));
+		destination.setIndicadorAtiva(NullableUtils.getNewValueIfNotNull(destination.getIndicadorAtiva(),source.getIndicadorAtiva()));
+		destination.setPermissaoDeUso(NullableUtils.getNewValueIfNotNull(destination.getPermissaoDeUso(), source.getPermissaoDeUso()));
+		//Temporalidade e Destinação
+		destination.setPrazoCorrente(NullableUtils.getNewValueIfNotNull(destination.getPrazoCorrente(), source.getPrazoCorrente()));
+		destination.setPrazoIntermediaria(NullableUtils.getNewValueIfNotNull(destination.getPrazoIntermediaria(), source.getPrazoIntermediaria()));
+		destination.setDestinacaoFinal(NullableUtils.getNewValueIfNotNull(destination.getDestinacaoFinal(), source.getDestinacaoFinal()));
+		//Sigilo associado à classe
 		destination.setSigilo(NullableUtils.getNewValueIfNotNull(destination.getSigilo(), source.getSigilo()));
-		// TODO completar campos a serem atualizados
+		destination.setGrauSigilo(NullableUtils.getNewValueIfNotNull(destination.getGrauSigilo(), source.getGrauSigilo()));
+		//Observações associadas à classe
+		destination.setObservacao(NullableUtils.getNewValueIfNotNull(destination.getObservacao(), source.getObservacao()));
+		// TODO completar campos a serem atualizados OK
 	}
 
 	private Classe toClasse(ClasseForm classeForm) {
