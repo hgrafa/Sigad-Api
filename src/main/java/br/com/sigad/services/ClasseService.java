@@ -54,6 +54,11 @@ public class ClasseService {
 		return classeRepository.findByDestinacaoFinal(destinacao);
 	}
 
+	public Classe buscarClassePorId(Long id){
+		return classeRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Classe não encontrada"));
+	}
+
 	public Classe updateClasse(Long id, ClasseForm classeUpdateForm) 
 		throws ClasseNaoEncontradaException {
 
