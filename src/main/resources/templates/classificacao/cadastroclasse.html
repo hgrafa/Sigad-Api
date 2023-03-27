@@ -251,7 +251,9 @@
 																		<td th:text="${classe.codigo}"></td>
 																		<td th:text="${classe.nome}"></td>
 																		<td> BOTÃO </td>
-																		<td> EDITAR </td>
+																		<td>
+																			<button onclick="window.location.href='/editar/' + ${classe.id}" class="btn btn-primary">Editar</button>
+																		</td>
 																	</tr>
 																	</tbody>
 																</table>
