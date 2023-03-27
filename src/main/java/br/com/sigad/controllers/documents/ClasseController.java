@@ -62,7 +62,23 @@ public class ClasseController {
 		classeService.register(classeForm);
 		return "redirect:/classes";
 	}
-	
+
+	@GetMapping(value ="/editar/{id}")
+	public String editarClasses(@PathVariable("id") Long id, Model model){
+		Classe classe = classeService.buscarClassePorId(id);
+		model.addAttribute("classe", classe);
+		return "editarClasse";
+	}
+
+	@GetMapping("/classe/{id}")
+	public String obterClassePorId(@PathVariable("id") Long id, Model model) {
+		Classe classe = classeService.buscarClassePorId(id);
+		model.addAttribute("classe", classe);
+		return "/classes";
+	}
+
+
+
 	@GetMapping (value = "cadastro/subclasse")
 	public String cadastrosubclasse() {
 		return "/classificacao/cadastrosubclasse";
