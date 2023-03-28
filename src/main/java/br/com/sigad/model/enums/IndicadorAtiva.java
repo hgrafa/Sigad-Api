@@ -1,8 +1,20 @@
 package br.com.sigad.model.enums;
 
-public enum IndicadorAtiva {
+import br.com.sigad.model.interfaces.EnumWithText;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-    ATIVO,
+@Getter @AllArgsConstructor
+public enum IndicadorAtiva implements EnumWithText {
 
-    INATIVO;
+    ATIVO("Ativo"),
+    INATIVO("Inativo");
+
+    private String absoluteText;
+    private String parsedText;
+
+    IndicadorAtiva(String text) {
+        this.parsedText = text;
+        this.absoluteText = text.replaceAll(" ", "_").toUpperCase();
+    }
 }

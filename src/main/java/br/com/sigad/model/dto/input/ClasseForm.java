@@ -2,6 +2,7 @@ package br.com.sigad.model.dto.input;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,21 +13,26 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ClasseForm {
 
-	// @NotBlank(message = "O código não deve estar em branco.")
 	private Long codigo;
-	@NotBlank(message = "O código nome deve estar em branco.")
+
+	@NotBlank(message = "O nome deve estar em branco.")
 	private String nome;
+
 	private String prazoCorrente;
 	private String prazoIntermediaria;
 	private String observacao;
 
-	// goes to boolean
+	@NotBlank(message = "O indicador da classe ativa ou inativa deve ser preenchido.")
 	private String indicadorAtiva;
 
-	// goes to enums
+	@NotBlank(message = "A permissão de uso da classe deve ser preenchida.")
 	private String permissaoDeUso;
+
 	private String destinacaoFinal;
+
+	@NotBlank(message = "Selecione o nível de sigilo da classe.")
 	private String sigilo;
+
 	private String grauSigilo;
 
 }
