@@ -31,46 +31,26 @@ public class ClasseController {
 
 	@GetMapping
 	public String cadastroclasse(Model model, ClasseForm classeForm) {
-	/*
-	public ClasseController(ClasseService classeService) {
-		this.classeService = classeService;
-	}
 
-	@RequestMapping(value = "/teste", method = RequestMethod.GET)
-
-	public String cadastroclasse(Model model) {
-	*/
 
 		List<DropdownOption> indicadorAtivaoptions = new ArrayList<>(Arrays.asList(
 			new DropdownOption("blank", "Selecione")
-//			new DropdownOption("ativa", "Ativa"),
-//			new DropdownOption("inativa", "Inativa")
 		));
 
 		List<DropdownOption> permissaoDeUsoOptions = new ArrayList<>(Arrays.asList(
 				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Estrutura Hierárquica", "Estrutura Hierárquica"),
-//				new DropdownOption("Temporalidade e Destinação", "Temporalidade e Destinação")
 		));
 
 		List<DropdownOption> destinacaoFinalOptions = new ArrayList<>(Arrays.asList(
 				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Eliminação", "Eliminação"),
-//				new DropdownOption("Guarda Permanente", "Guarda Permanente")
 		));
 
 		List<DropdownOption> sigiloOptions = new ArrayList<>(Arrays.asList(
 				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Ostensivo", "Ostensivo"),
-//				new DropdownOption("Sigiloso", "Sigiloso")
 		));
 
 		List<DropdownOption> grauSigiloOptions = new ArrayList<>(Arrays.asList(
 				new DropdownOption("blank", "Selecione")
-//				new DropdownOption("Confidencial", "Confidencial"),
-//				new DropdownOption("Reservado", "Reservado"),
-//				new DropdownOption("Secreto", "Secreto"),
-//				new DropdownOption("Ultra_Secreto", "Ultra-Secreto")
 		));
 
 
