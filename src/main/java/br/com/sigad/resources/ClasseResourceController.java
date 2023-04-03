@@ -22,12 +22,7 @@ public class ClasseResourceController {
 
 	@GetMapping
 	public ResponseEntity<List<ClasseDto>> getAll() {
-		List<ClasseDto> classes = classeService
-				.findAll()
-				.stream()
-				.map(c -> new ClasseDto(c))
-				.collect(Collectors.toList());
-
+		var classes = classeService.findAll();
 		return ResponseEntity.ok().body(classes);
 	}
 
@@ -55,7 +50,8 @@ public class ClasseResourceController {
 	}
 
 	@PutMapping(value = "/atualizar/{id}")
-	public ResponseEntity<ClasseDto> updateClasse(@PathVariable Long id, @RequestBody ClasseForm classeUpdateForm) throws Exception {
+	public ResponseEntity<ClasseDto> updateClasse(@PathVariable Long id, @RequestBody ClasseForm classeUpdateForm)
+			throws Exception {
 		ClasseDto classe;
 		
 		try {
