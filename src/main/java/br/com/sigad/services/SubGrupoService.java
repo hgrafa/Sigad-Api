@@ -1,6 +1,6 @@
 package br.com.sigad.services;
 
-import br.com.sigad.model.entities.SubGrupo;
+import br.com.sigad.domain.model.SubGrupo;
 import br.com.sigad.repositories.SubGrupoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

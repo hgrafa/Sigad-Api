@@ -1,6 +1,6 @@
 package br.com.sigad.repositories;
 
-import br.com.sigad.model.entities.SubGrupo;
+import br.com.sigad.domain.model.SubGrupo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

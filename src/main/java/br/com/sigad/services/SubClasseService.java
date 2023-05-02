@@ -1,6 +1,6 @@
 package br.com.sigad.services;
 
-import br.com.sigad.model.entities.SubClasse;
+import br.com.sigad.domain.model.SubClasse;
 import br.com.sigad.repositories.SubClasseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
