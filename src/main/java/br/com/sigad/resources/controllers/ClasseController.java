@@ -22,7 +22,6 @@ public class ClasseController {
 			@RequestParam(defaultValue = "5") int size,
 			@RequestParam(defaultValue = "1") int page
 	) {
-
 		var classes = classeService.getAll(PageRequest.of(size, page));
 		return ResponseEntity.ok(classes);
 	}
