@@ -5,8 +5,10 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Entity
 @Table(name = "classes")
@@ -15,16 +17,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Classe {
-	
+public class DocumentClass {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long codigo;
 	private String nome;
-	private String prazoCorrente;
-	private String prazoIntermediaria;
-	private String observacao;
+
 	private IndicadorAtiva indicadorAtiva;
 
 	@Enumerated(EnumType.STRING)
@@ -38,8 +38,11 @@ public class Classe {
 	
 	@Enumerated(EnumType.STRING) @Nullable
 	private GrauSigilo grauSigilo;
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classe")
-	private List<SubClasse> subClasses = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "documentClass")
+	private List<DocumentSubClass> documentSubClasses = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "documentClass")
+	private List<Document> documents = new ArrayList<>();
 
 }

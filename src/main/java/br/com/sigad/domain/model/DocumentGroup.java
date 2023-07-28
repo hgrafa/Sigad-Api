@@ -7,16 +7,17 @@ import br.com.sigad.domain.enums.Sigilo;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "grupos")
+@Table(name = "groups")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Grupo {
+public class DocumentGroup {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,8 +43,11 @@ public class Grupo {
 	private GrauSigilo grauSigilo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private SubClasse subclasse;
+	private DocumentSubClass documentSubClass;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "grupo")
-	private List<SubGrupo> subGrupo;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "documentGroup")
+	private List<DocumentSubGroup> documentSubGroups = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "documentClass")
+	private List<Document> documents = new ArrayList<>();
 }
