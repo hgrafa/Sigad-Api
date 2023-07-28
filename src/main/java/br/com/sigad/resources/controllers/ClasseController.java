@@ -2,7 +2,7 @@ package br.com.sigad.resources.controllers;
 
 import br.com.sigad.domain.dto.input.ClasseForm;
 import br.com.sigad.domain.dto.output.ClasseViewDto;
-import br.com.sigad.infrastructure.services.ClasseService;
+import br.com.sigad.infrastructure.service.ClasseService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

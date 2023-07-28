@@ -1,8 +1,8 @@
-package br.com.sigad.infrastructure.services;
+package br.com.sigad.infrastructure.service;
 
 import br.com.sigad.domain.dto.input.ClasseForm;
 import br.com.sigad.domain.dto.output.ClasseViewDto;
-import br.com.sigad.domain.exceptions.ClasseNaoEncontradaException;
+import br.com.sigad.infrastructure.exception.ClasseNaoEncontradaException;
 import br.com.sigad.domain.model.Classe;
 import br.com.sigad.infrastructure.profiles.ClasseMapper;
 import br.com.sigad.infrastructure.repository.ClasseRepository;
@@ -11,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

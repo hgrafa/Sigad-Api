@@ -1,4 +1,4 @@
-package br.com.sigad.domain.exceptions;
+package br.com.sigad.infrastructure.exception;
 
 public class DestinacaoInvalidaException extends RuntimeException {
 
