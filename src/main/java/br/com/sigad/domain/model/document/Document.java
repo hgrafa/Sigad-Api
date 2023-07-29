@@ -1,4 +1,4 @@
-package br.com.sigad.domain.model;
+package br.com.sigad.domain.model.document;
 
 import jakarta.persistence.*;
 import lombok.*;

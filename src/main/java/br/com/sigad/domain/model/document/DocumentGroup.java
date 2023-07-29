@@ -1,9 +1,5 @@
-package br.com.sigad.domain.model;
+package br.com.sigad.domain.model.document;
 
-import br.com.sigad.domain.enums.Destinacao;
-import br.com.sigad.domain.enums.GrauSigilo;
-import br.com.sigad.domain.enums.Permissao;
-import br.com.sigad.domain.enums.Sigilo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,26 +17,10 @@ public class DocumentGroup {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; 
+	private Long id;
+	private String code;
+	private String name;
 
-	private String nome;
-	private Long codigo;	
-	private String prazoIntermediaria;
-	private String prazoCorrente;
-	private Boolean indicadorAtiva;
-	private String observacao;
-	
-	@Enumerated(EnumType.STRING)
-	private Permissao permissaoDeUso;
-	
-	@Enumerated(EnumType.STRING)
-	private Destinacao destinacaoFinal;
-	
-	@Enumerated(EnumType.STRING)
-	private Sigilo sigilo;
-	
-	@Enumerated(EnumType.STRING)
-	private GrauSigilo grauSigilo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private DocumentSubClass documentSubClass;

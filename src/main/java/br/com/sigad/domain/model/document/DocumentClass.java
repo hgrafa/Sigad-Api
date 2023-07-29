@@ -1,14 +1,11 @@
-package br.com.sigad.domain.model;
+package br.com.sigad.domain.model.document;
 
-import br.com.sigad.domain.enums.*;
-import jakarta.annotation.Nullable;
+import br.com.sigad.domain.model.classifications.Confidentiality;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 @Entity
 @Table(name = "classes")
@@ -22,22 +19,12 @@ public class DocumentClass {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long codigo;
-	private String nome;
+	private String code;
+	private String name;
 
-	private IndicadorAtiva indicadorAtiva;
-
-	@Enumerated(EnumType.STRING)
-	private Permissao permissaoDeUso;
-	
-	@Enumerated(EnumType.STRING)
-	private Destinacao destinacaoFinal;
-	
-	@Enumerated(EnumType.STRING)
-	private Sigilo sigilo;
-	
-	@Enumerated(EnumType.STRING) @Nullable
-	private GrauSigilo grauSigilo;
+	@OneToOne
+	@JoinColumn(name = "confidentiality_id")
+	private Confidentiality confidentiality = Confidentiality.getInstance();
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "documentClass")
 	private List<DocumentSubClass> documentSubClasses = new ArrayList<>();
