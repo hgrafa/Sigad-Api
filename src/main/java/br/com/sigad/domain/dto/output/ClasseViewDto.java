@@ -16,7 +16,7 @@ public record ClasseViewDto (
 
 }
 
-//	public ClasseDto(Classe classe) {
+//	public ClasseDto(DocumentClass classe) {
 //		this.id = classe.getId();
 //		this.codigo = classe.getCodigo();
 //		this.nome = classe.getNome();

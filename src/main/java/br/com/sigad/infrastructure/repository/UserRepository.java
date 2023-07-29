@@ -1,6 +1,6 @@
 package br.com.sigad.infrastructure.repository;
 
-import br.com.sigad.domain.model.User;
+import br.com.sigad.domain.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

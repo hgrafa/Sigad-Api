@@ -31,7 +31,7 @@ public class ClasseService {
 	public ClasseViewDto getById(Long id) {
 		// TODO tratar excessão not found
 		var classe = classeRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Classe não encontrada"));
+				.orElseThrow(() -> new RuntimeException("DocumentClass não encontrada"));
 
 		return classeMapper.classeToView(classe);
 	}
