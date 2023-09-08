@@ -1,5 +1,7 @@
 package br.com.sigad.domain.enums;
 
+import lombok.Getter;
+
 public enum EventosGerenciamento {
 
 	EGC1("Abertura de classe"),
@@ -15,12 +17,17 @@ public enum EventosGerenciamento {
 	EGC11("Alteração de destinação"),
 	EGC12("Alteração de sigilo associado à classe");
 
-	private String absoluteText;
-	private String parsedText;
+	private String text;
 
 	EventosGerenciamento(String text) {
-		this.parsedText = text;
-		this.absoluteText = text.replaceAll(" ", "_").toUpperCase();
+		this.text = text;
 	}
 
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
 }
